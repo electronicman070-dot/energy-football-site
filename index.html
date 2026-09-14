@@ -1,44 +1,185 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>پنل مدیریت | بچه‌های سالن</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="login" class="screen">
-  <div class="login-box">
-    <img src="assets/logo.png" class="logo" alt="لوگو">
-    <h1>پنل مدیریت</h1>
-    <div class="subtitle">بچه‌های سالن | مدرسه انرژی اتمی</div>
-    <label>رمز عبور</label>
-    <input id="password" type="password" placeholder="رمز عبور را وارد کنید" autocomplete="off">
-    <button id="loginBtn" class="primary">ورود به پنل</button>
-    <p id="error" class="error"></p>
-  </div>
-</div>
+document
+.getElementById("paymentForm")
+.addEventListener(
+    "submit",
+    function(event){
 
-<div id="panel" class="hidden">
-<header class="header">
-  <div class="brand"><img src="assets/logo.png" class="logo small" alt="لوگو"><div><b>پنل مدیریت</b><small>بچه‌های سالن | مدرسه انرژی اتمی</small></div></div>
-  <button id="logout" class="logout">خروج</button>
-</header>
-<main>
-<h1 class="page-title">مدیریت سایت</h1>
-<div class="cards">
-  <button class="card" data-title="مدیریت بازی‌ها"><span>⚽</span><b>بازی‌ها</b><small>ثبت و مدیریت بازی‌های هفته</small></button>
-  <button class="card" data-title="مدیریت بازیکنان"><span>♟</span><b>بازیکنان</b><small>افزودن و مدیریت بازیکنان</small></button>
-  <button class="card" data-title="نظرسنجی"><span>▤</span><b>نظرسنجی</b><small>ساخت و مدیریت نظرسنجی</small></button>
-  <button class="card" data-title="پرداخت‌ها"><span>▣</span><b>پرداخت‌ها</b><small>ثبت و بررسی پرداخت‌ها</small></button>
-  <button class="card" data-title="پیام مدیریت"><span>✉</span><b>پیام مدیریت</b><small>نمایش پیام در صفحه اصلی</small></button>
-  <button class="card" data-title="آمار"><span>▥</span><b>آمار</b><small>مشاهده آمار ثبت‌شده</small></button>
-</div>
-<div class="note">اطلاعات واقعی پس از اتصال بخش‌های مدیریتی ثبت و در سایت اصلی نمایش داده می‌شوند.</div>
-</main>
-</div>
+        event.preventDefault();
 
-<div id="modal" class="modal hidden"><div class="modalbox"><button id="close">×</button><h2 id="mt"></h2><p>این بخش در مرحله بعد به فرم‌های واقعی مدیریت متصل می‌شود.</p><button id="ok" class="primary">باشه</button></div></div>
-<script src="script.js"></script>
-</body></html>
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        const phone =
+            document
+            .getElementById("phone")
+            .value
+            .trim();
+
+
+        const receipt =
+            document
+            .getElementById("receipt")
+            .files[0];
+
+
+        const description =
+            document
+            .getElementById("description")
+            .value
+            .trim();
+
+
+        if(
+            !name ||
+            !phone ||
+            !receipt
+        ){
+
+            alert(
+                "لطفاً اطلاعات لازم را کامل کنید."
+            );
+
+            return;
+
+        }
+
+
+        /*
+        این قسمت موقت است.
+        در مرحله بعد به دیتابیس آنلاین وصل می‌شود.
+        */
+
+        const playerData = {
+
+            name:name,
+
+            phone:phone,
+
+            receiptName:
+                receipt.name,
+
+            description:
+                description,
+
+            attendance:
+                "yes",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            "lastPlayer",
+            JSON.stringify(playerData)
+        );
+
+
+        const success =
+            document
+            .getElementById(
+                "paymentSuccess"
+            );
+
+
+        success.style.display =
+            "block";
+
+
+        this.reset();
+
+    }
+);
+
+
+/*
+=================================================
+فرم پیام به مدیر
+=================================================
+*/
+
+document
+.getElementById("messageForm")
+.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const name =
+            document
+            .getElementById(
+                "messageName"
+            )
+            .value
+            .trim();
+
+
+        const message =
+            document
+            .getElementById(
+                "messageText"
+            )
+            .value
+            .trim();
+
+
+        if(!name || !message){
+
+            alert(
+                "لطفاً نام و پیام را وارد کنید."
+            );
+
+            return;
+
+        }
+
+
+        /*
+        این قسمت موقت است.
+        در مرحله بعد پیام واقعاً به دیتابیس
+        و پنل مدیریت ارسال خواهد شد.
+        */
+
+        const messageData = {
+
+            name:name,
+
+            message:message,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+            "lastMessage",
+            JSON.stringify(messageData)
+        );
+
+
+        document
+        .getElementById(
+            "messageSuccess"
+        )
+        .style
+        .display = "block";
+
+
+        this.reset();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
