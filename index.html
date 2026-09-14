@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بچه‌های سالن | مدرسه انرژی اتمی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="title">
+    <div class="lalezar">بچه‌های سالن</div>
+    <small>مدرسه انرژی اتمی</small>
+  </div>
+  <div class="actions"><button id="notify">♧</button><button id="menu">☰</button></div>
+</header>
+
+<main>
+<section class="grid">
+  <div class="card profile">
+    <div class="profile-top"><div class="avatar">+</div><div><h1>پروفایل</h1><span>مدیر اصلی</span></div></div>
+    <div class="links">
+      <button data-modal="پروفایل">♙ <b>پروفایل</b> <i>‹</i></button>
+      <button data-modal="تنظیمات">⚙ <b>تنظیمات</b> <i>‹</i></button>
+      <button data-modal="خروج">⇱ <b>خروج</b> <i>‹</i></button>
+    </div>
+  </div>
+  <div class="card message">
+    <h2>▤ پیام مدیریت</h2>
+    <div class="empty">هنوز پیامی ثبت نشده است.</div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat green"><strong>♟</strong><h3>حاضرین</h3><b>—</b><small>هنوز ثبت نشده</small></div>
+  <div class="stat blue"><strong>▤</strong><h3>پرداخت‌شده</h3><b>—</b><small>هنوز ثبت نشده</small></div>
+  <div class="stat pink"><strong>×</strong><h3>پرداخت‌نشده</h3><b>—</b><small>هنوز ثبت نشده</small></div>
+</section>
+
+<section class="card section">
+  <div class="section-head"><h2>مدیران ♟</h2><button class="add" id="addManager">＋ افزودن مدیر</button></div>
+  <div class="empty">هنوز مدیر دیگری ثبت نشده است.</div>
+</section>
+
+<section class="card section">
+  <div class="section-head"><h2>بازی این هفته ▣</h2><button class="link" id="calendar">تقویم</button></div>
+  <div class="empty">هنوز بازی‌ای ثبت نشده است.</div>
+</section>
+
+<section class="banner">⚽ <div><h2>با هم، برای یک بازی بهتر</h2><p>رزرو، نظرسنجی و اطلاعات بازی پس از ثبت توسط مدیریت نمایش داده می‌شود.</p></div></section>
+</main>
+
+<nav>
+<button class="active" data-tab="خانه">⌂<small>خانه</small></button>
+<button data-tab="نظرسنجی">▤<small>نظرسنجی</small></button>
+<button data-tab="پرداخت‌ها">▣<small>پرداخت‌ها</small></button>
+<button data-tab="بازیکنان">♟<small>بازیکنان</small></button>
+<button data-tab="آمار">▥<small>آمار</small></button>
+</nav>
+
+<div class="modal hidden" id="modal"><div class="modalbox"><button id="close">×</button><h2 id="modalTitle"></h2><p id="modalText"></p><button class="ok" id="ok">باشه</button></div></div>
+<script src="script.js"></script>
+</body>
+</html>
