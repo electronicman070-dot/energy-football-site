@@ -1,183 +1,116 @@
 document
-.getElementById("paymentForm")
-.addEventListener(
-    "submit",
-    function(event){
-
-        event.preventDefault();
-
-
-        const name =
-            document
-            .getElementById("name")
-            .value
-            .trim();
-
-
-        const phone =
-            document
-            .getElementById("phone")
-            .value
-            .trim();
-
-
-        const receipt =
-            document
-            .getElementById("receipt")
-            .files[0];
-
-
-        const description =
-            document
-            .getElementById("description")
-            .value
-            .trim();
-
-
-        if(
-            !name ||
-            !phone ||
-            !receipt
-        ){
-
-            alert(
-                "لطفاً اطلاعات لازم را کامل کنید."
-            );
-
-            return;
-
-        }
-
-
-        /*
-        این قسمت موقت است.
-        در مرحله بعد به دیتابیس آنلاین وصل می‌شود.
-        */
-
-        const playerData = {
-
-            name:name,
-
-            phone:phone,
-
-            receiptName:
-                receipt.name,
-
-            description:
-                description,
-
-            attendance:
-                "yes",
-
-            createdAt:
-                new Date().toISOString()
-
-        };
-
-
-        localStorage.setItem(
-            "lastPlayer",
-            JSON.stringify(playerData)
-        );
-
-
-        const success =
-            document
-            .getElementById(
-                "paymentSuccess"
-            );
-
-
-        success.style.display =
-            "block";
-
-
-        this.reset();
+        .getElementById("blockedPage")
+        .style.display = "flex";
 
     }
-);
+
+});
+
 
 
 /*
-=================================================
-فرم پیام به مدیر
-=================================================
+====================================================
+ثبت پرداخت
+====================================================
 */
 
 document
-.getElementById("messageForm")
-.addEventListener(
-    "submit",
-    function(event){
+.getElementById("paymentForm")
+.addEventListener("submit",function(event){
 
-        event.preventDefault();
+    event.preventDefault();
 
 
-        const name =
-            document
-            .getElementById(
-                "messageName"
-            )
-            .value
-            .trim();
+    const name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
 
 
-        const message =
-            document
-            .getElementById(
-                "messageText"
-            )
-            .value
-            .trim();
+    const phone =
+        document
+        .getElementById("phone")
+        .value
+        .trim();
 
 
-        if(!name || !message){
-
-            alert(
-                "لطفاً نام و پیام را وارد کنید."
-            );
-
-            return;
-
-        }
+    const tracking =
+        document
+        .getElementById("tracking")
+        .value
+        .trim();
 
 
-        /*
-        این قسمت موقت است.
-        در مرحله بعد پیام واقعاً به دیتابیس
-        و پنل مدیریت ارسال خواهد شد.
-        */
-
-        const messageData = {
-
-            name:name,
-
-            message:message,
-
-            createdAt:
-                new Date().toISOString()
-
-        };
+    const receipt =
+        document
+        .getElementById("receipt")
+        .files[0];
 
 
-        localStorage.setItem(
-            "lastMessage",
-            JSON.stringify(messageData)
+    const description =
+        document
+        .getElementById("description")
+        .value
+        .trim();
+
+
+    if(
+        !name ||
+        !phone ||
+        !tracking ||
+        !receipt
+    ){
+
+        alert(
+            "لطفاً همه اطلاعات لازم را وارد کنید."
+        );
+
+        return;
+
+    }
+
+
+    let payments =
+        JSON.parse(
+            localStorage.getItem(PAYMENT_KEY) || "[]"
         );
 
 
-        document
-        .getElementById(
-            "messageSuccess"
-        )
-        .style
-        .display = "block";
+    payments.push({
+
+        name:name,
+
+        phone:phone,
+
+        tracking:tracking,
+
+        receiptName:receipt.name,
+
+        description:description,
+
+        paid:true,
+
+        createdAt:
+            new Date().toLocaleString("fa-IR")
+
+    });
 
 
-        this.reset();
+    localStorage.setItem(
+        PAYMENT_KEY,
+        JSON.stringify(payments)
+    );
 
-    }
-);
+
+    document
+    .getElementById("paymentNotice")
+    .style.display = "block";
+
+
+    this.reset();
+
+});
 
 </script>
 
