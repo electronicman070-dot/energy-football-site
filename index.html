@@ -1,240 +1,42 @@
-<textarea
-                id="description"
-                placeholder="توضیحات (اختیاری)"
-            ></textarea>
+name:
+                document
+                .getElementById("messageName")
+                .value
+                .trim(),
 
-            <label>
-                رسید پرداخت:
-            </label>
+            message:
+                document
+                .getElementById("messageText")
+                .value
+                .trim(),
 
-            <input
-                id="receipt"
-                type="file"
-                accept="image/*,.pdf"
-                required
-            >
+            createdAt:
+                new Date().toISOString()
 
-            <button type="submit">
-                📤 ارسال اطلاعات پرداخت
-            </button>
+        };
 
-        </form>
 
-        <div
-            class="success"
-            id="paymentSuccess"
-        >
-            ✅ اطلاعات پرداخت شما ثبت شد.
-        </div>
+        const messages =
+            JSON.parse(
+                localStorage.getItem("adminMessages") || "[]"
+            );
 
-    </div>
 
+        messages.push(message);
 
-    <!-- پیام به مدیر -->
 
-    <div class="card">
+        localStorage.setItem(
+            "adminMessages",
+            JSON.stringify(messages)
+        );
 
-        <h2>📩 پیام به مدیر</h2>
 
-        <p>
-            اگر سؤال یا مشکلی دارید، پیام خود را برای مدیر ارسال کنید.
-        </p>
+        document
+            .getElementById("messageSuccess")
+            .style.display = "block";
 
-        <form id="messageForm">
 
-            <input
-                id="messageName"
-                type="text"
-                placeholder="نام شما"
-                required
-            >
-
-            <textarea
-                id="messageText"
-                placeholder="پیام خود را بنویسید..."
-                required
-            ></textarea>
-
-            <button type="submit">
-                📩 ارسال پیام به مدیر
-            </button>
-
-        </form>
-
-        <div
-            class="success"
-            id="messageSuccess"
-        >
-            ✅ پیام شما ثبت شد.
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- صفحه خروج -->
-
-<div
-    class="exit"
-    id="exitPage"
->
-
-    <div class="exit-box">
-
-        <h2>
-            ❌ عدم تمایل به حضور
-        </h2>
-
-        <p>
-            نظر شما ثبت شد.
-            با تشکر از اینکه در نظرسنجی شرکت کردید.
-        </p>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* مثبت */
-
-function voteYes(){
-
-    document
-    .getElementById("pollSection")
-    .style.display="none";
-
-    document
-    .getElementById("paymentSection")
-    .style.display="block";
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* منفی */
-
-function voteNo(){
-
-    document
-    .getElementById("pollSection")
-    .style.display="none";
-
-    document
-    .getElementById("exitPage")
-    .style.display="flex";
-
-}
-
-
-/* پرداخت */
-
-document
-.getElementById("paymentForm")
-.addEventListener("submit",function(event){
-
-    event.preventDefault();
-
-    const payment={
-
-        name:
-        document.getElementById("name").value.trim(),
-
-        phone:
-        document.getElementById("phone").value.trim(),
-
-        tracking:
-        document.getElementById("tracking").value.trim(),
-
-        description:
-        document.getElementById("description").value.trim(),
-
-        receipt:
-        document.getElementById("receipt").files[0].name,
-
-        paid:true,
-
-        createdAt:
-        new Date().toISOString()
-
-    };
-
-
-    const payments=
-    JSON.parse(
-        localStorage.getItem("payments") || "[]"
-    );
-
-
-    payments.push(payment);
-
-
-    localStorage.setItem(
-        "payments",
-        JSON.stringify(payments)
-    );
-
-
-    document
-    .getElementById("paymentSuccess")
-    .style.display="block";
-
-
-    this.reset();
-
-});
-
-
-/* پیام به مدیر */
-
-document
-.getElementById("messageForm")
-.addEventListener("submit",function(event){
-
-    event.preventDefault();
-
-
-    const message={
-
-        name:
-        document.getElementById("messageName").value.trim(),
-
-        message:
-        document.getElementById("messageText").value.trim(),
-
-        createdAt:
-        new Date().toISOString()
-
-    };
-
-
-    const messages=
-    JSON.parse(
-        localStorage.getItem("adminMessages") || "[]"
-    );
-
-
-    messages.push(message);
-
-
-    localStorage.setItem(
-        "adminMessages",
-        JSON.stringify(messages)
-    );
-
-
-    document
-    .getElementById("messageSuccess")
-    .style.display="block";
-
-
-    this.reset();
+        this.reset();
 
 });
 
