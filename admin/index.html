@@ -1,1 +1,153 @@
+<div id="games"></div>
+</div>
 
+
+<div class="section">
+<h2>👥 آمار</h2>
+
+<div class="row">
+<input id="presentInput" type="number" placeholder="تعداد حاضرین">
+<input id="paidInput" type="number" placeholder="تعداد پرداخت‌شده">
+<input id="unpaidInput" type="number" placeholder="تعداد پرداخت‌نشده">
+</div>
+
+<button class="blue" onclick="saveStats()">ذخیره آمار</button>
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const PASSWORD="f.energyatomic";
+
+function login(){
+ const p=document.getElementById("password").value;
+
+ if(p===PASSWORD){
+   document.getElementById("login").style.display="none";
+   document.getElementById("dashboard").style.display="block";
+   loadData();
+ }else{
+   document.getElementById("error").style.display="block";
+ }
+}
+
+function logout(){
+ document.getElementById("dashboard").style.display="none";
+ document.getElementById("login").style.display="block";
+ document.getElementById("password").value="";
+}
+
+function saveMessage(){
+ const msg=document.getElementById("adminMessage").value;
+ localStorage.setItem("adminMessage",msg);
+
+ document.getElementById("saved").style.display="block";
+
+ setTimeout(()=>{
+   document.getElementById("saved").style.display="none";
+ },2000);
+}
+
+function saveStats(){
+ const p=document.getElementById("presentInput").value||0;
+ const paid=document.getElementById("paidInput").value||0;
+ const unpaid=document.getElementById("unpaidInput").value||0;
+
+ localStorage.setItem("present",p);
+ localStorage.setItem("paid",paid);
+ localStorage.setItem("unpaid",unpaid);
+
+ loadData();
+}
+
+function addGame(){
+
+ const date=document.getElementById("gameDate").value;
+ const time=document.getElementById("gameTime").value;
+ const place=document.getElementById("gamePlace").value;
+
+ if(!date || !time) return;
+
+ let games=JSON.parse(localStorage.getItem("games")||"[]");
+
+ games.push({
+   date:date,
+   time:time,
+   place:place
+ });
+
+ localStorage.setItem("games",JSON.stringify(games));
+
+ document.getElementById("gameDate").value="";
+ document.getElementById("gameTime").value="";
+ document.getElementById("gamePlace").value="";
+
+ loadGames();
+}
+
+function deleteGame(i){
+
+ let games=JSON.parse(localStorage.getItem("games")||"[]");
+
+ games.splice(i,1);
+
+ localStorage.setItem("games",JSON.stringify(games));
+
+ loadGames();
+}
+
+function loadGames(){
+
+ const box=document.getElementById("games");
+
+ let games=JSON.parse(localStorage.getItem("games")||"[]");
+
+ box.innerHTML="";
+
+ games.forEach((g,i)=>{
+
+   box.innerHTML+=
+   <div class="game">
+   <b>⚽ ${g.date}</b><br>
+   ساعت: ${g.time}<br>
+   محل: ${g.place||"—"}
+   <br><br>
+   <button class="red" onclick="deleteGame(${i})">حذف بازی</button>
+   </div>
+   ;
+ });
+}
+
+function loadData(){
+
+ document.getElementById("present").innerText=
+ localStorage.getItem("present")||0;
+
+ document.getElementById("paid").innerText=
+ localStorage.getItem("paid")||0;
+
+ document.getElementById("unpaid").innerText=
+ localStorage.getItem("unpaid")||0;
+
+ document.getElementById("adminMessage").value=
+ localStorage.getItem("adminMessage")||"";
+
+ document.getElementById("presentInput").value=
+ localStorage.getItem("present")||0;
+
+ document.getElementById("paidInput").value=
+ localStorage.getItem("paid")||0;
+
+ document.getElementById("unpaidInput").value=
+ localStorage.getItem("unpaid")||0;
+
+ loadGames();
+}
+
+</script>
+
+</body>
+</html>
