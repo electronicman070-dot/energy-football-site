@@ -1,209 +1,228 @@
-const player =
-        players.find(
-            item => item.id === id
-        );
+<input
+id="newAdminPassword"
+type="password"
+placeholder="رمز مدیر جدید"
+>
+
+<button
+class="blue"
+onclick="addAdmin()">
+افزودن مدیر
+</button>
+
+<p id="adminResult" class="small"></p>
+
+</div>
+
+</div>
 
 
-    if(!player){
+<!-- PLAYERS -->
 
-        return;
+<div class="card">
 
-    }
+<h2>👥 وضعیت بازیکنان</h2>
 
+<div class="item">
 
-    player.approved = false;
+<strong>امیرعلی بهجت</strong>
 
-    savePlayers(players);
+<span class="badge paid">
+پرداخت‌شده
+</span>
 
-    renderPanel();
+</div>
 
-}
+<div class="item">
 
+<strong>علی محمدی</strong>
 
-/*
-====================================================
-حذف بازیکن
-====================================================
-*/
+<span class="badge paid">
+پرداخت‌شده
+</span>
 
-function deletePlayer(id){
+</div>
 
-    const answer =
-        confirm(
-            "آیا مطمئن هستید که این بازیکن حذف شود؟"
-        );
+<div class="item">
 
+<strong>رضا کریمی</strong>
 
-    if(!answer){
+<span class="badge unpaid">
+پرداخت‌نشده
+</span>
 
-        return;
+</div>
 
-    }
+<div class="item">
 
+<strong>محمد حسینی</strong>
 
-    const players =
-        getPlayers().filter(
-            player => player.id !== id
-        );
+<span class="badge paid">
+پرداخت‌شده
+</span>
 
+</div>
 
-    savePlayers(players);
-
-    renderPanel();
-
-}
-
-
-/*
-====================================================
-نمایش رسید
-====================================================
-*/
-
-function showReceipt(id){
-
-    const players = getPlayers();
-
-    const player =
-        players.find(
-            item => item.id === id
-        );
+</div>
 
 
-    if(!player || !player.receipt){
+<!-- MESSAGES -->
 
-        return;
+<div class="card">
 
-    }
+<h2>✉️ پیام‌های دریافتی</h2>
+
+<div id="messages">
+
+<div class="message item">
+
+<strong>امیرعلی</strong>
+
+<p>
+سلام، برای بازی پنجشنبه یک سؤال داشتم.
+</p>
+
+<span class="small">
+پیام نمونه
+</span>
+
+</div>
+
+</div>
+
+</div>
 
 
-    const content =
-        document.getElementById(
-            "receiptContent"
-        );
+</div>
+
+</div>
 
 
-    if(
-        player.receipt.type ===
-        "application/pdf"
-    ){
+<script>
 
-        content.innerHTML = 
+const ADMIN_PASSWORD = "f.energyatomic";
 
-            <iframe
-                src="${player.receipt.data}"
-                style="
-                    width:80vw;
-                    max-width:850px;
-                    height:75vh;
-                    border:0;
-                    border-radius:10px;
-                "
-            ></iframe>
 
-        ;
+function login(){
+
+    const password =
+        document.getElementById("password").value;
+
+    if(password === ADMIN_PASSWORD){
+
+        document.getElementById("loginPage").style.display =
+            "none";
+
+        document.getElementById("dashboard").style.display =
+            "block";
 
     }else{
 
-        content.innerHTML = 
-
-            <img
-                src="${player.receipt.data}"
-                alt="رسید پرداخت"
-            >
-
-        ;
+        document.getElementById("loginError").style.display =
+            "block";
 
     }
 
+}
 
-    document
-        .getElementById("receiptModal")
-        .style
-        .display = "flex";
+
+function logout(){
+
+    document.getElementById("dashboard").style.display =
+        "none";
+
+    document.getElementById("loginPage").style.display =
+        "flex";
+
+    document.getElementById("password").value = "";
 
 }
 
 
-/*
-====================================================
-بستن رسید
-====================================================
-*/
+function savePoll(){
 
-function closeReceipt(){
+    const question =
+        document.getElementById("pollQuestion").value;
 
-    document
-        .getElementById("receiptModal")
-        .style
-        .display = "none";
+    localStorage.setItem(
+        "pollQuestion",
+        question
+    );
 
-    document
-        .getElementById("receiptContent")
-        .innerHTML = "";
+    document.getElementById("pollResult").innerText =
+        "نظرسنجی ذخیره شد ✓";
 
 }
 
 
-/*
-====================================================
-ذخیره پیام مدیریت
-====================================================
-*/
+function saveGame(){
+
+    localStorage.setItem(
+        "gameDate",
+        document.getElementById("gameDate").value
+    );
+
+    localStorage.setItem(
+        "gameTime",
+        document.getElementById("gameTime").value
+    );
+
+    localStorage.setItem(
+        "gamePlace",
+        document.getElementById("gamePlace").value
+    );
+
+    localStorage.setItem(
+        "gameMap",
+        document.getElementById("gameMap").value
+    );
+
+    alert("اطلاعات بازی ذخیره شد ✓");
+
+}
+
 
 function saveMessage(){
 
     const message =
-        document
-            .getElementById("adminMessage")
-            .value;
-
+        document.getElementById("adminMessage").value;
 
     localStorage.setItem(
-        MESSAGE_KEY,
+        "adminMessage",
         message
     );
 
-
-    const result =
-        document.getElementById(
-            "messageResult"
-        );
-
-
-    result.style.display = "block";
-
-
-    setTimeout(() => {
-
-        result.style.display = "none";
-
-    },2000);
+    document.getElementById("messageResult").innerText =
+        "پیام منتشر شد ✓";
 
 }
 
 
-/*
-====================================================
-Enter برای ورود
-====================================================
-*/
+function addAdmin(){
 
-document
-    .getElementById("passwordInput")
-    .addEventListener(
-        "keydown",
-        function(event){
+    const name =
+        document.getElementById("newAdmin").value;
 
-            if(event.key === "Enter"){
+    const password =
+        document.getElementById("newAdminPassword").value;
 
-                login();
+    if(name === "" || password === ""){
 
-            }
+        alert("نام و رمز مدیر را وارد کنید.");
 
-        }
+        return;
+
+    }
+
+    localStorage.setItem(
+        "admin_" + name,
+        password
     );
 
+    document.getElementById("adminResult").innerText =
+        "مدیر جدید اضافه شد ✓";
+
+}
 
 </script>
 
