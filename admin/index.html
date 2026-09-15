@@ -1,34 +1,318 @@
-const notice=localStorage.getItem("adminNotice");
+alert("✅ پاسخ ارسال شد.");
 
-    if(date){
-        document.getElementById("gameDate").textContent=date;
-        document.getElementById("inputGameDate").value=date;
+    box.querySelector("textarea").value="";
+
+    box.style.display="none";
+
+}
+
+
+function deleteMessage(button){
+
+    if(!confirm("آیا این پیام حذف شود؟")){
+        return;
     }
 
-    if(time){
-        document.getElementById("gameTime").textContent=time;
-        document.getElementById("inputGameTime").value=time;
+    button.closest(".message").remove();
+
+}
+
+
+/* =========================
+   POLL
+========================= */
+
+function addOption(){
+
+    const container=
+        document.getElementById("pollOptions");
+
+    const div=document.createElement("div");
+
+    div.className="poll-option";
+
+    div.innerHTML=
+
+        <input placeholder="گزینه جدید">
+
+        <button
+            class="remove-option"
+            onclick="removeOption(this)">
+            ×
+        </button>
+
+    ;
+
+    container.appendChild(div);
+
+}
+
+
+function removeOption(button){
+
+    const options=
+        document.querySelectorAll(".poll-option");
+
+    if(options.length<=2){
+
+        alert("نظرسنجی حداقل باید ۲ گزینه داشته باشد.");
+
+        return;
+
     }
 
-    if(place){
-        document.getElementById("gamePlace").textContent=place;
-        document.getElementById("inputGamePlace").value=place;
+    button.parentElement.remove();
+
+}
+
+
+function savePoll(){
+
+    const question=
+        document.getElementById("pollQuestion").value.trim();
+
+    if(!question){
+
+        alert("متن سؤال را وارد کنید.");
+
+        return;
+
     }
 
-    if(capacity){
-        document.getElementById("gameCapacity").textContent=
-            capacity+" نفر";
+    const options=
+        [...document.querySelectorAll("#pollOptions input")]
+        .map(i=>i.value.trim())
+        .filter(Boolean);
 
-        document.getElementById("inputGameCapacity").value=capacity;
+    if(options.length<2){
+
+        alert("حداقل دو گزینه وارد کنید.");
+
+        return;
+
     }
+
+    localStorage.setItem(
+        "pollData",
+        JSON.stringify({
+            question:question,
+            options:options
+        })
+    );
+
+    alert("✅ نظرسنجی ذخیره شد.");
+
+}
+
+
+function deletePoll(){
+
+    if(!confirm("نظرسنجی حذف شود؟")){
+        return;
+    }
+
+    localStorage.removeItem("pollData");
+
+    alert("🗑 نظرسنجی حذف شد.");
+
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+function saveGame(){
+
+    const date=
+        document.getElementById("gameDate").value;
+
+    const time=
+        document.getElementById("gameTime").value;
+
+    const place=
+        document.getElementById("gamePlace").value;
+
+    const capacity=
+        document.getElementById("gameCapacity").value;
+
+    localStorage.setItem(
+        "gameData",
+        JSON.stringify({
+            date,
+            time,
+            place,
+            capacity
+        })
+    );
+
+    document.getElementById("dashDate")
+        .textContent=date;
+
+    document.getElementById("dashTime")
+        .textContent=time;
+
+    document.getElementById("dashPlace")
+        .textContent=place;
+
+    document.getElementById("dashCapacity")
+        .textContent=capacity+" نفر";
+
+    alert("✅ اطلاعات بازی ذخیره شد.");
+
+}
+
+
+/* =========================
+   NOTICE
+========================= */
+
+function saveNotice(){
+
+    const notice=
+        document.getElementById("noticeInput")
+        .value;
+
+    localStorage.setItem(
+        "adminNotice",
+        notice
+    );
+
+    document.getElementById("dashboardNotice")
+        .textContent=notice;
+
+    alert("✅ پیام مدیریتی ذخیره شد.");
+
+}
+
+
+/* =========================
+   MANAGERS
+========================= */
+
+function addManager(){
+
+    const name=prompt("نام مدیر جدید:");
+
+    if(!name) return;
+
+    const level=prompt(
+        "سطح دسترسی را وارد کنید:\n\n"+
+        "1 - مدیر کامل\n"+
+        "2 - فقط بازیکنان\n"+
+        "3 - فقط پرداخت‌ها"
+    );
+
+    if(!level) return;
+
+    alert(
+        "✅ مدیر "+name+
+        " با سطح دسترسی "+level+
+        " اضافه شد.\n\n"+
+        "برای ذخیره دائمی مدیران، اتصال دیتابیس لازم است."
+    );
+
+}
+
+
+function editManager(name){
+
+    const level=prompt(
+        "سطح دسترسی جدید برای "+name+":"
+    );
+
+    if(level){
+
+        alert("✅ سطح دسترسی تغییر کرد.");
+
+    }
+
+}
+
+
+function removeManager(button){
+
+    if(!confirm("این مدیر حذف شود؟")){
+        return;
+    }
+
+    button
+    .closest(".manager")
+    .remove();
+
+}
+
+
+/* =========================
+   LOAD SAVED DATA
+========================= */
+
+window.addEventListener("load",function(){
+
+    const game=
+        JSON.parse(
+            localStorage.getItem("gameData")
+        );
+
+    if(game){
+
+        document.getElementById("gameDate")
+            .value=game.date;
+
+        document.getElementById("gameTime")
+            .value=game.time;
+
+        document.getElementById("gamePlace")
+            .value=game.place;
+
+        document.getElementById("gameCapacity")
+            .value=game.capacity;
+
+        document.getElementById("dashDate")
+            .textContent=game.date;
+
+        document.getElementById("dashTime")
+            .textContent=game.time;
+
+        document.getElementById("dashPlace")
+            .textContent=game.place;
+
+        document.getElementById("dashCapacity")
+            .textContent=game.capacity+" نفر";
+
+    }
+
+
+    const notice=
+        localStorage.getItem("adminNotice");
 
     if(notice){
 
-        document.getElementById("adminNotice").textContent=notice;
+        document.getElementById("noticeInput")
+            .value=notice;
 
-        document.getElementById("noticeInput").value=notice;
+        document.getElementById("dashboardNotice")
+            .textContent=notice;
 
     }
+
+
+    const poll=
+        JSON.parse(
+            localStorage.getItem("pollData")
+        );
+
+    if(poll){
+
+        document.getElementById("pollQuestion")
+            .value=poll.question;
+
+    }
+
+
+    renderPlayers();
+
+    updateStats();
 
 });
 
