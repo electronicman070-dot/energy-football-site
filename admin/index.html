@@ -2,721 +2,483 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>پنل مدیریت | بچه‌های سالن مدرسه انرژی اتمی</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>پنل مدیریت | بچه‌های سالن انرژی اتمی</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-    --bg:#020c16;
-    --bg2:#061827;
-    --card:#071c2e;
-    --card2:#0b263d;
-    --border:#123e5d;
-    --green:#24f0a5;
-    --green2:#13c987;
-    --blue:#168cff;
-    --red:#ff4778;
-    --yellow:#ffc857;
-    --text:#f4f8ff;
-    --muted:#9db0c4;
+--bg:#03111d;
+--card:#071d2d;
+--card2:#09263a;
+--border:#123e59;
+--green:#24efaa;
+--blue:#168cff;
+--red:#ff4f78;
+--yellow:#ffc857;
+--text:#f4f8ff;
+--muted:#91a8bb
 }
 
 body{
-    font-family:'Lalezar',Tahoma,sans-serif;
-    background:
-        radial-gradient(circle at 10% 0%,rgba(0,153,255,.13),transparent 28%),
-        radial-gradient(circle at 90% 20%,rgba(0,255,160,.08),transparent 25%),
-        linear-gradient(135deg,#020a12,#031421 55%,#020912);
-    color:var(--text);
-    min-height:100vh;
+font-family:Lalezar,Tahoma,sans-serif;
+background:
+radial-gradient(circle at 10% 0%,rgba(0,145,255,.15),transparent 30%),
+radial-gradient(circle at 90% 10%,rgba(0,255,170,.08),transparent 30%),
+linear-gradient(135deg,#020b13,#031827);
+color:var(--text);
+min-height:100vh
 }
 
-button,input,textarea,select{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-.hidden{
-    display:none!important;
-}
+button,input,textarea,select{font-family:inherit}
+button{cursor:pointer}
 
 /* LOGIN */
 
-.login-screen{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
+#loginPage{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
 }
 
-.login-box{
-    width:100%;
-    max-width:430px;
-    background:rgba(7,28,46,.94);
-    border:1px solid #165074;
-    border-radius:28px;
-    padding:35px 28px;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
-    text-align:center;
+.login{
+width:100%;
+max-width:420px;
+background:rgba(7,29,45,.97);
+border:1px solid #174866;
+border-radius:28px;
+padding:35px 28px;
+text-align:center;
+box-shadow:0 25px 80px rgba(0,0,0,.5)
 }
 
-.logo{
-    width:88px;
-    height:88px;
-    border-radius:50%;
-    margin:0 auto 18px;
-    border:3px solid var(--green);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:45px;
-    background:linear-gradient(145deg,#0d3850,#061522);
-    box-shadow:0 0 30px rgba(36,240,165,.18);
+.ball{
+width:90px;
+height:90px;
+margin:auto auto 18px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+background:#09253a;
+border:3px solid var(--green);
+box-shadow:0 0 30px rgba(36,239,170,.2)
 }
 
-.login-box h1{
-    font-size:27px;
-    margin-bottom:4px;
-}
-
-.login-box h2{
-    color:var(--green);
-    font-size:22px;
-    margin-bottom:25px;
+.login h1{font-size:29px}
+.login h2{
+font-size:21px;
+color:var(--green);
+margin:4px 0 25px
 }
 
 .input{
-    width:100%;
-    background:#061522;
-    border:1px solid #1b4664;
-    color:white;
-    padding:14px 16px;
-    border-radius:14px;
-    outline:none;
-    font-size:16px;
-    margin-bottom:12px;
+width:100%;
+background:#041522;
+border:1px solid #194763;
+color:white;
+border-radius:14px;
+padding:14px;
+outline:none;
+font-size:16px;
+margin-bottom:12px
 }
 
 .input:focus{
-    border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(36,240,165,.08);
+border-color:var(--green);
+box-shadow:0 0 0 3px rgba(36,239,170,.08)
 }
 
-.primary-btn{
-    width:100%;
-    border:0;
-    border-radius:15px;
-    padding:14px;
-    background:linear-gradient(135deg,var(--green),var(--green2));
-    color:#00130c;
-    font-size:18px;
-    font-weight:bold;
+.loginBtn{
+width:100%;
+border:0;
+padding:14px;
+border-radius:14px;
+font-size:18px;
+background:linear-gradient(135deg,var(--green),#11c98b);
+color:#00140d
 }
 
-.login-error{
-    color:#ff718f;
-    margin-top:12px;
+.error{
+color:#ff6689;
+margin-top:12px
 }
 
 /* APP */
 
-.app{
-    display:none;
+#app{display:none}
+
+.top{
+position:sticky;
+top:0;
+z-index:10;
+background:rgba(2,12,21,.94);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #12354d;
+padding:13px 20px
 }
 
-.topbar{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(2,13,23,.92);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid #12344e;
-    padding:15px 24px;
-}
-
-.topbar-inner{
-    max-width:1450px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+.topInside{
+max-width:1400px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
+display:flex;
+align-items:center;
+gap:12px
 }
 
-.brand-logo{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    border:2px solid var(--green);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:26px;
-    background:#092137;
+.brandBall{
+width:50px;
+height:50px;
+border-radius:50%;
+border:2px solid var(--green);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+background:#09243a
 }
 
-.brand-title{
-    font-size:22px;
-    line-height:1.1;
+.brandText{
+font-size:21px;
+line-height:1.1
 }
 
-.brand-title span{
-    display:block;
-    color:var(--green);
+.brandText span{
+display:block;
+color:var(--green)
 }
 
-.admin-info{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.admin{
+display:flex;
+align-items:center;
+gap:8px
 }
 
-.admin-badge{
-    border:1px solid var(--green);
-    color:var(--green);
-    border-radius:30px;
-    padding:6px 13px;
+.badge{
+border:1px solid var(--green);
+color:var(--green);
+border-radius:20px;
+padding:5px 12px
 }
 
 .logout{
-    border:1px solid #5d2740;
-    color:#ff7795;
-    background:#21101a;
-    padding:8px 15px;
-    border-radius:12px;
+border:1px solid #672840;
+background:#28101b;
+color:#ff7897;
+border-radius:11px;
+padding:8px 13px
 }
 
 .container{
-    max-width:1450px;
-    margin:auto;
-    padding:25px;
+max-width:1400px;
+margin:auto;
+padding:22px
 }
 
-.welcome{
-    margin-bottom:22px;
-}
-
-.welcome h1{
-    font-size:31px;
-}
-
+.welcome h1{font-size:30px}
 .welcome p{
-    color:var(--muted);
-    font-family:Tahoma,sans-serif;
-    font-size:13px;
+font-family:Tahoma;
+font-size:12px;
+color:var(--muted);
+margin-bottom:20px
 }
 
 /* STATS */
 
 .stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-bottom:20px;
-}
-    .stat{
-    position:relative;
-    overflow:hidden;
-    min-height:145px;
-    padding:22px;
-    border-radius:22px;
-    border:1px solid var(--border);
-    background:linear-gradient(145deg,#082238,#051523);
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+margin-bottom:18px
 }
 
-.stat::after{
-    content:"";
-    position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    left:-50px;
-    bottom:-60px;
-    background:rgba(255,255,255,.025);
+.stat{
+background:linear-gradient(145deg,#09243a,#051522);
+border:1px solid var(--border);
+border-radius:20px;
+padding:18px;
+min-height:130px
 }
 
-.stat.green{
-    border-color:#087d60;
+.stat.green{border-color:#08795d}
+.stat.blue{border-color:#155b9b}
+.stat.red{border-color:#84304c}
+.stat.yellow{border-color:#795d20}
+
+.statIcon{
+font-size:27px;
+margin-bottom:6px
 }
 
-.stat.blue{
-    border-color:#15589a;
+.statTitle{
+color:var(--muted);
+font-size:14px
 }
 
-.stat.red{
-    border-color:#8d3152;
-}
-
-.stat.yellow{
-    border-color:#806323;
-}
-
-.stat-icon{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-    margin-bottom:10px;
-    border:1px solid currentColor;
-}
-
-.green .stat-icon{color:var(--green);}
-.blue .stat-icon{color:#3b9cff;}
-.red .stat-icon{color:#ff5d84;}
-.yellow .stat-icon{color:var(--yellow);}
-
-.stat-title{
-    color:var(--muted);
-    font-size:15px;
-}
-
-.stat-number{
-    font-size:36px;
-    line-height:1;
+.statNumber{
+font-size:35px
 }
 
 /* NAV */
 
 .nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-bottom:20px;
+display:flex;
+gap:8px;
+overflow-x:auto;
+margin-bottom:18px;
+padding-bottom:3px
 }
 
 .nav button{
-    border:1px solid #16415e;
-    background:#071a2b;
-    color:#a9bbce;
-    border-radius:14px;
-    padding:11px 17px;
-    font-size:15px;
+white-space:nowrap;
+background:#071b2b;
+border:1px solid #153f5b;
+color:#a6b9ca;
+border-radius:13px;
+padding:10px 15px;
+font-size:15px
 }
 
 .nav button.active{
-    color:#00140d;
-    background:var(--green);
-    border-color:var(--green);
+background:var(--green);
+color:#00150d;
+border-color:var(--green)
 }
 
 /* PANELS */
 
-.panel{
-    display:none;
-}
-
-.panel.active{
-    display:block;
-}
+.panel{display:none}
+.panel.active{display:block}
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px
+}
+    .card{
+background:linear-gradient(145deg,#082238,#041522);
+border:1px solid var(--border);
+border-radius:21px;
+padding:20px
 }
 
-.card{
-    background:linear-gradient(145deg,rgba(8,32,52,.96),rgba(4,19,31,.96));
-    border:1px solid var(--border);
-    border-radius:23px;
-    padding:22px;
-    box-shadow:0 15px 50px rgba(0,0,0,.16);
+.full{grid-column:1/-1}
+
+.title{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:17px
 }
 
-.card.full{
-    grid-column:1/-1;
+.title h2{font-size:21px}
+.title span{color:var(--green)}
+
+.formGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px
 }
 
-.card-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:18px;
-}
-
-.card-title h2{
-    font-size:22px;
-}
-
-.card-title span{
-    color:var(--green);
-}
-
-/* FORMS */
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-.form-group{
-    margin-bottom:12px;
-}
-
-.form-group label{
-    display:block;
-    color:#a9bdcf;
-    font-size:14px;
-    margin-bottom:6px;
+label{
+display:block;
+color:#a7bacb;
+font-size:14px;
+margin-bottom:5px
 }
 
 textarea.input{
-    min-height:120px;
-    resize:vertical;
+min-height:110px;
+resize:vertical
 }
 
-.action-btn{
-    border:0;
-    border-radius:12px;
-    padding:10px 17px;
-    font-size:15px;
+.btn{
+border:0;
+border-radius:11px;
+padding:9px 15px;
+font-size:14px
 }
 
-.save{
-    background:linear-gradient(135deg,var(--green),var(--green2));
-    color:#00130c;
+.greenBtn{
+background:var(--green);
+color:#00150d
 }
 
-.blue-btn{
-    background:#0c4d86;
-    color:white;
+.blueBtn{
+background:#0d5189;
+color:white
 }
 
-.danger{
-    background:#521a30;
-    color:#ff7b9b;
+.redBtn{
+background:#54192e;
+color:#ff7b9b
 }
 
-.warning{
-    background:#5b4516;
-    color:#ffd96c;
+.yellowBtn{
+background:#5b4517;
+color:#ffd86d
 }
 
-.action-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:8px;
+.actions{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:8px
 }
 
 /* TABLE */
 
-.table-wrap{
-    overflow-x:auto;
-}
+.tableWrap{overflow-x:auto}
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:700px;
+width:100%;
+border-collapse:collapse;
+min-width:720px
 }
 
 th,td{
-    padding:13px 10px;
-    border-bottom:1px solid #14354c;
-    text-align:right;
+padding:12px 9px;
+border-bottom:1px solid #14364d;
+text-align:right
 }
 
-th{
-    color:var(--green);
-    font-size:14px;
-}
+th{color:var(--green)}
 
 td{
-    color:#dce7f1;
-    font-family:Tahoma,sans-serif;
-    font-size:13px;
+font-family:Tahoma;
+font-size:12px;
+color:#dce6ef
 }
 
 .status{
-    display:inline-block;
-    border-radius:20px;
-    padding:5px 10px;
-    font-family:inherit;
+padding:5px 9px;
+border-radius:20px
 }
 
-.status.paid{
-    color:#48f0b0;
-    background:#083c2d;
+.paid{
+color:#48efb1;
+background:#083c2d
 }
 
-.status.unpaid{
-    color:#ff7898;
-    background:#431729;
+.wait{
+color:#ffd86b;
+background:#443513
 }
 
-.status.wait{
-    color:#ffd86c;
-    background:#453613;
-}
-
-/* PLAYER */
-
-.player-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.player{
-    background:#061a2a;
-    border:1px solid #143c58;
-    border-radius:18px;
-    padding:15px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.avatar{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:linear-gradient(145deg,#153e60,#071725);
-    border:1px solid #2876a7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:23px;
-}
-
-.player-name{
-    font-size:16px;
-}
-
-.player-info{
-    color:#8299ad;
-    font-family:Tahoma,sans-serif;
-    font-size:11px;
-}
-
-/* POLL */
-    .poll-option{
-    display:flex;
-    gap:8px;
-    margin-bottom:9px;
-}
-
-.poll-option .input{
-    margin:0;
-}
-
-.remove-option{
-    width:45px;
-    border:1px solid #6b2841;
-    color:#ff7696;
-    background:#26101a;
-    border-radius:12px;
+.unpaid{
+color:#ff7897;
+background:#431729
 }
 
 /* MESSAGE */
 
 .message{
-    background:#061a2a;
-    border:1px solid #153e59;
-    border-radius:18px;
-    padding:17px;
-    margin-bottom:12px;
+background:#061a2a;
+border:1px solid #143c57;
+border-radius:16px;
+padding:15px;
+margin-bottom:10px
 }
 
-.message-head{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:9px;
+.messageHead{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px
 }
 
-.message-name{
-    color:var(--green);
+.messageName{color:var(--green)}
+.messageDate{
+font-family:Tahoma;
+font-size:10px;
+color:#71899b
 }
 
-.message-date{
-    color:#70889b;
-    font-family:Tahoma,sans-serif;
-    font-size:11px;
-}
-
-.message-text{
-    color:#d7e3ed;
-    font-family:Tahoma,sans-serif;
-    font-size:13px;
-    line-height:1.9;
-}
-
-.reply-box{
-    display:flex;
-    gap:8px;
-    margin-top:12px;
-}
-
-.reply-box .input{
-    margin:0;
+.messageText{
+font-family:Tahoma;
+font-size:12px;
+line-height:1.9
 }
 
 /* MANAGERS */
 
-.manager-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
+.managers{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px
 }
 
 .manager{
-    border:1px solid #153e59;
-    background:#061a2a;
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
+text-align:center;
+background:#061a2a;
+border:1px solid #143d58;
+border-radius:17px;
+padding:18px
 }
 
-.manager.main{
-    border-color:var(--green);
+.manager.main{border-color:var(--green)}
+
+.managerIcon{
+width:60px;
+height:60px;
+border-radius:50%;
+margin:auto auto 8px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0b3049;
+font-size:28px
 }
 
-.manager-avatar{
-    width:65px;
-    height:65px;
-    margin:0 auto 10px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#0c3049;
-    font-size:29px;
-}
-
-.manager-role{
-    color:var(--green);
-    font-size:14px;
-}
-
-/* NOTICE */
-
-.notice-preview{
-    border:1px solid #0d8c68;
-    background:linear-gradient(135deg,#073a35,#062338);
-    border-radius:18px;
-    padding:20px;
-    margin-top:15px;
+.managerRole{
+color:var(--green);
+font-size:13px
 }
 
 /* TOAST */
 
-.toast{
-    position:fixed;
-    left:20px;
-    bottom:20px;
-    background:#082b24;
-    border:1px solid var(--green);
-    color:#b9ffe7;
-    border-radius:15px;
-    padding:13px 18px;
-    z-index:999;
-    transform:translateY(120px);
-    transition:.3s;
+#toast{
+position:fixed;
+left:20px;
+bottom:20px;
+background:#07352a;
+border:1px solid var(--green);
+color:#b9ffe7;
+padding:12px 17px;
+border-radius:13px;
+transform:translateY(100px);
+transition:.3s;
+z-index:100
 }
 
-.toast.show{
-    transform:translateY(0);
+#toast.show{transform:translateY(0)}
+
+@media(max-width:900px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.managers{grid-template-columns:repeat(2,1fr)}
 }
 
-/* RESPONSIVE */
-
-@media(max-width:1000px){
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .player-list,
-    .manager-list{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:700px){
-    .topbar{
-        padding:12px;
-    }
-
-    .container{
-        padding:14px;
-    }
-
-    .brand-title{
-        font-size:17px;
-    }
-
-    .brand-logo{
-        width:43px;
-        height:43px;
-    }
-
-    .admin-badge{
-        display:none;
-    }
-
-    .welcome h1{
-        font-size:25px;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-        gap:9px;
-    }
-
-    .stat{
-        min-height:125px;
-        padding:15px;
-    }
-
-    .stat-number{
-        font-size:30px;
-    }
-
-    .grid,
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .player-list,
-    .manager-list{
-        grid-template-columns:1fr;
-    }
-
-    .nav{
-        overflow-x:auto;
-        flex-wrap:nowrap;
-        padding-bottom:4px;
-    }
-
-    .nav button{
-        white-space:nowrap;
-    }
+@media(max-width:650px){
+.container{padding:13px}
+.stats{gap:8px}
+.stat{padding:13px}
+.statNumber{font-size:29px}
+.grid,.formGrid{grid-template-columns:1fr}
+.managers{grid-template-columns:1fr}
+.badge{display:none}
+.brandText{font-size:17px}
 }
 </style>
 </head>
@@ -725,1882 +487,514 @@ td{
 
 <!-- ================= LOGIN ================= -->
 
-<section class="login-screen" id="loginScreen">
+<div id="loginPage">
 
-    <div class="login-box">
+<div class="login">
 
-        <div class="logo">⚽</div>
+<div class="ball">⚽</div>
 
-        <h1>پنل مدیریت</h1>
-        <h2>بچه‌های سالن مدرسه انرژی اتمی</h2>
+<h1>پنل مدیریت</h1>
 
-        <input
-            id="passwordInput"
-            class="input"
-            type="password"
-            placeholder="رمز ورود مدیریت"
-            onkeydown="if(event.key==='Enter') login()"
-        >
+<h2>بچه‌های سالن مدرسه انرژی اتمی</h2>
 
-        <button class="primary-btn" onclick="login()">
-            ورود به پنل مدیریت
-        </button>
+<input
+id="password"
+class="input"
+type="password"
+placeholder="رمز عبور مدیریت"
+autocomplete="off"
+>
 
-        <div id="loginError" class="login-error"></div>
+<button class="loginBtn" onclick="login()">
+ورود به پنل
+</button>
 
-    </div>
+<div id="error" class="error"></div>
 
-</section>
+</div>
+
+</div>
 
 
-<!-- ================= APP ================= -->
+<!-- ================= ADMIN APP ================= -->
 
-<div class="app" id="app">
+<div id="app">
 
-<header class="topbar">
+<header class="top">
 
-    <div class="topbar-inner">
+<div class="topInside">
 
-        <div class="brand">
+<div class="brand">
 
-            <div class="brand-logo">⚽</div>
+<div class="brandBall">⚽</div>
 
-            <div class="brand-title">
-                بچه‌های سالن
-                <span>مدرسه انرژی اتمی</span>
-            </div>
+<div class="brandText">
+بچه‌های سالن
+<span>مدرسه انرژی اتمی</span>
+</div>
 
-        </div>
+</div>
 
-        <div class="admin-info">
+<div class="admin">
 
-            <div class="admin-badge">
-                👑 امیرعلی بهجت
-            </div>
-            <button class="logout" onclick="logout()">
-                خروج
-            </button>
+<div class="badge">👑 امیرعلی بهجت</div>
 
-        </div>
+<button class="logout" onclick="logout()">
+خروج
+</button>
 
-    </div>
+</div>
+
+</div>
 
 </header>
 
 
 <main class="container">
 
-    <div class="welcome">
-        <h1>داشبورد مدیریت 👋</h1>
-        <p>مدیریت کامل بازی، بازیکنان، پرداخت‌ها، پیام‌ها و نظرسنجی</p>
-    </div>
-
-
-    <!-- STATS -->
-
-    <section class="stats">
-
-        <div class="stat green">
-
-            <div class="stat-icon">👥</div>
-
-            <div class="stat-title">کل بازیکنان</div>
-
-            <div class="stat-number" id="totalPlayers">0</div>
-
-        </div>
-
-
-        <div class="stat green">
-
-            <div class="stat-icon">⚽</div>
-
-            <div class="stat-title">افراد حاضر</div>
-
-            <div class="stat-number" id="presentPlayers">0</div>
-
-        </div>
-
-
-        <div class="stat blue">
-
-            <div class="stat-icon">💳</div>
-
-            <div class="stat-title">پرداخت‌شده</div>
-
-            <div class="stat-number" id="paidPlayers">0</div>
-
-        </div>
-
-
-        <div class="stat red">
-
-            <div class="stat-icon">✕</div>
-
-            <div class="stat-title">پرداخت‌نشده</div>
-
-            <div class="stat-number" id="unpaidPlayers">0</div>
-
-        </div>
-
-    </section>
-
-
-    <!-- NAVIGATION -->
-
-    <nav class="nav">
-
-        <button class="active" onclick="showPanel('dashboard',this)">
-            🏠 داشبورد
-        </button>
-
-        <button onclick="showPanel('players',this)">
-            👥 بازیکنان
-        </button>
-
-        <button onclick="showPanel('payments',this)">
-            💳 پرداخت‌ها
-        </button>
-
-        <button onclick="showPanel('game',this)">
-            ⚽ بازی هفته
-        </button>
-
-        <button onclick="showPanel('poll',this)">
-            📊 نظرسنجی
-        </button>
-
-        <button onclick="showPanel('messages',this)">
-            💬 پیام‌ها
-        </button>
-
-        <button onclick="showPanel('managers',this)">
-            👨‍💼 مدیران
-        </button>
-
-        <button onclick="showPanel('notice',this)">
-            📢 پیام مدیریتی
-        </button>
-
-        <button onclick="showPanel('stats',this)">
-            📈 آمار کلی
-        </button>
-
-    </nav>
-
-
-    <!-- ================= DASHBOARD ================= -->
-
-    <section class="panel active" id="panel-dashboard">
-
-        <div class="grid">
-
-            <div class="card">
-
-                <div class="card-title">
-                    <h2>👑 مدیر اصلی</h2>
-                    <span>دسترسی کامل</span>
-                </div>
-
-                <p style="font-size:20px">
-                    امیرعلی بهجت
-                </p>
-
-                <p style="color:#8fa5b8;font-family:Tahoma;font-size:12px;margin-top:8px">
-                    مدیر اصلی سایت و دارای دسترسی کامل به تمام بخش‌های مدیریت
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-title">
-                    <h2>📢 پیام فعلی</h2>
-                </div>
-
-                <div id="dashboardNotice" class="notice-preview">
-                    هنوز پیام مدیریتی ثبت نشده است.
-                </div>
-
-            </div>
-
-
-            <div class="card full">
-
-                <div class="card-title">
-                    <h2>⚽ بازی این هفته</h2>
-                </div>
-
-                <div class="form-grid">
-
-                    <div>
-                        📅 تاریخ:
-                        <strong id="dashDate">تعیین نشده</strong>
-                    </div>
-
-                    <div>
-                        🕐 ساعت:
-                        <strong id="dashTime">تعیین نشده</strong>
-                    </div>
-
-                    <div>
-                        📍 مکان:
-                        <strong id="dashPlace">تعیین نشده</strong>
-                    </div>
-
-                    <div>
-                        👥 ظرفیت:
-                        <strong id="dashCapacity">تعیین نشده</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PLAYERS ================= -->
-    <section class="panel" id="panel-players">
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <h2>👥 مدیریت بازیکنان</h2>
-
-                <button class="action-btn save" onclick="addPlayer()">
-                    ＋ افزودن بازیکن
-                </button>
-
-            </div>
-
-            <div class="table-wrap">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>نام</th>
-                            <th>شماره تلفن</th>
-                            <th>حضور</th>
-                            <th>پرداخت</th>
-                            <th>عملیات</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="playersTable"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PAYMENTS ================= -->
-
-    <section class="panel" id="panel-payments">
-
-        <div class="card">
-
-            <div class="card-title">
-                <h2>💳 مدیریت پرداخت‌ها</h2>
-            </div>
-
-            <div class="table-wrap">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>نام</th>
-                            <th>شماره</th>
-                            <th>اطلاعات پیگیری</th>
-                            <th>رسید</th>
-                            <th>وضعیت</th>
-                            <th>عملیات</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="paymentsTable"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= GAME ================= -->
-
-    <section class="panel" id="panel-game">
-
-        <div class="card">
-
-            <div class="card-title">
-                <h2>⚽ تنظیمات بازی این هفته</h2>
-            </div>
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>📅 تاریخ بازی</label>
-                    <input id="gameDate" class="input" type="text" placeholder="مثلاً پنجشنبه ۲۵ اردیبهشت">
-                </div>
-
-                <div class="form-group">
-                    <label>🕐 ساعت بازی</label>
-                    <input id="gameTime" class="input" type="text" placeholder="مثلاً ۱۸:۰۰">
-                </div>
-
-                <div class="form-group">
-                    <label>📍 مکان بازی</label>
-                    <input id="gamePlace" class="input" type="text" placeholder="مثلاً سالن مدرسه انرژی اتمی">
-                </div>
-
-                <div class="form-group">
-                    <label>👥 ظرفیت بازی</label>
-                    <input id="gameCapacity" class="input" type="number" placeholder="مثلاً ۲۰">
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <label>🗺️ لینک لوکیشن</label>
-                <input id="gameLocation" class="input" type="text" placeholder="لینک Google Maps">
-            </div>
-
-            <button class="action-btn save" onclick="saveGame()">
-                💾 ذخیره اطلاعات بازی
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= POLL ================= -->
-
-    <section class="panel" id="panel-poll">
-
-        <div class="grid">
-
-            <div class="card">
-
-                <div class="card-title">
-                    <h2>📊 ایجاد نظرسنجی</h2>
-                </div>
-
-                <div class="form-group">
-
-                    <label>متن سؤال</label>
-
-                    <input
-                        id="pollQuestion"
-                        class="input"
-                        placeholder="مثلاً این هفته در بازی شرکت می‌کنی؟"
-                    >
-
-                </div>
-
-                <label style="color:#a9bdcf">
-                    گزینه‌ها
-                </label>
-
-                <div id="pollOptions" style="margin-top:8px"></div>
-
-                <div class="action-row">
-                    <button class="action-btn blue-btn" onclick="addPollOption()">
-                        ＋ افزودن گزینه
-                    </button>
-
-                    <button class="action-btn save" onclick="savePoll()">
-                        💾 ذخیره نظرسنجی
-                    </button>
-
-                    <button class="action-btn danger" onclick="deletePoll()">
-                        حذف نظرسنجی
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-title">
-                    <h2>📈 نتایج نظرسنجی</h2>
-                </div>
-
-                <div id="pollResults">
-                    هنوز نظرسنجی ایجاد نشده است.
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= MESSAGES ================= -->
-
-    <section class="panel" id="panel-messages">
-
-        <div class="card">
-
-            <div class="card-title">
-                <h2>💬 پیام‌های بچه‌ها</h2>
-            </div>
-
-            <div id="messagesList"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= MANAGERS ================= -->
-
-    <section class="panel" id="panel-managers">
-
-        <div class="card">
-
-            <div class="card-title">
-
-                <h2>👨‍💼 مدیریت مدیران</h2>
-
-                <button class="action-btn save" onclick="addManager()">
-                    ＋ افزودن مدیر
-                </button>
-
-            </div>
-
-            <p style="color:#8299ad;font-family:Tahoma;font-size:12px;margin-bottom:18px">
-                فقط مدیر اصلی امکان افزودن، حذف و تعیین سطح دسترسی مدیران را دارد.
-            </p>
-
-            <div class="manager-list" id="managerList"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= NOTICE ================= -->
-
-    <section class="panel" id="panel-notice">
-
-        <div class="card">
-
-            <div class="card-title">
-                <h2>📢 پیام مدیریتی</h2>
-            </div>
-
-            <div class="form-group">
-
-                <label>
-                    این پیام در سایت بچه‌ها نمایش داده می‌شود
-                </label>
-
-                <textarea
-                    id="noticeInput"
-                    class="input"
-                    placeholder="متن پیام را وارد کنید..."
-                ></textarea>
-
-            </div>
-
-            <button class="action-btn save" onclick="saveNotice()">
-                💾 ذخیره پیام
-            </button>
-
-            <div class="notice-preview">
-
-                <strong>پیش‌نمایش:</strong>
-
-                <div id="noticePreview" style="margin-top:8px">
-                    هنوز پیامی ثبت نشده است.
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= STATS ================= -->
-
-    <section class="panel" id="panel-stats">
-
-        <div class="grid">
-
-            <div class="card">
-                <div class="card-title">
-                    <h2>👥 آمار بازیکنان</h2>
-                </div>
-
-                <p>
-                    کل بازیکنان:
-                    <strong id="statTotal">0</strong>
-                </p>
-
-                <p style="margin-top:10px">
-                    حاضر:
-                    <strong id="statPresent">0</strong>
-                </p>
-
-            </div>
-
-
-            <div class="card">
-                <div class="card-title">
-                    <h2>💳 آمار پرداخت</h2>
-                </div>
-
-                <p>
-                    پرداخت‌شده:
-                    <strong id="statPaid">0</strong>
-                </p>
-
-                <p style="margin-top:10px">
-                    پرداخت‌نشده:
-                    <strong id="statUnpaid">0</strong>
-                </p>
-
-            </div>
-
-
-            <div class="card full">
-
-                <div class="card-title">
-                    <h2>📊 خلاصه وضعیت</h2>
-                </div>
-
-                <div id="statsSummary" style="line-height:2"></div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
+<div class="welcome">
+<h1>داشبورد مدیریت 👋</h1>
+<p>مدیریت کامل سایت، بازی، بازیکنان، پرداخت‌ها و پیام‌ها</p>
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat green">
+<div class="statIcon">👥</div>
+<div class="statTitle">کل بازیکنان</div>
+<div id="total" class="statNumber">0</div>
+</div>
+
+<div class="stat green">
+<div class="statIcon">⚽</div>
+<div class="statTitle">افراد حاضر</div>
+<div id="present" class="statNumber">0</div>
+</div>
+<div class="stat blue">
+<div class="statIcon">💳</div>
+<div class="statTitle">پرداخت‌شده</div>
+<div id="paid" class="statNumber">0</div>
+</div>
+
+<div class="stat red">
+<div class="statIcon">❌</div>
+<div class="statTitle">پرداخت‌نشده</div>
+<div id="unpaid" class="statNumber">0</div>
+</div>
 
 </div>
 
 
-<div id="toast" class="toast"></div>
-<script>
+<!-- NAV -->
 
-/* =========================================================
-   ADMIN LOGIN
-========================================================= */
+<div class="nav">
 
-const ADMIN_PASSWORD = "atomicenergybnd";
+<button class="active" onclick="panel('dashboard',this)">
+🏠 داشبورد
+</button>
 
-function login(){
+<button onclick="panel('players',this)">
+👥 بازیکنان
+</button>
 
-    const password =
-        document.getElementById("passwordInput").value;
+<button onclick="panel('payments',this)">
+💳 پرداخت‌ها
+</button>
 
-    if(password === ADMIN_PASSWORD){
+<button onclick="panel('game',this)">
+⚽ بازی هفته
+</button>
 
-        sessionStorage.setItem("adminLoggedIn","true");
+<button onclick="panel('poll',this)">
+📊 نظرسنجی
+</button>
 
-        document.getElementById("loginScreen").style.display="none";
-        document.getElementById("app").style.display="block";
+<button onclick="panel('messages',this)">
+💬 پیام‌ها
+</button>
 
-        loadAll();
+<button onclick="panel('managers',this)">
+👨‍💼 مدیران
+</button>
 
-    }else{
+<button onclick="panel('notice',this)">
+📢 پیام مدیریتی
+</button>
 
-        document.getElementById("loginError").textContent =
-            "❌ رمز عبور اشتباه است.";
+<button onclick="panel('stats',this)">
+📈 آمار
+</button>
 
-    }
+</div>
 
-}
 
-function logout(){
+<!-- DASHBOARD -->
 
-    sessionStorage.removeItem("adminLoggedIn");
+<section id="dashboard" class="panel active">
 
-    document.getElementById("app").style.display="none";
-    document.getElementById("loginScreen").style.display="flex";
+<div class="grid">
 
-    document.getElementById("passwordInput").value="";
+<div class="card">
 
-}
+<div class="title">
+<h2>👑 مدیر اصلی</h2>
+<span>دسترسی کامل</span>
+</div>
 
+<div style="font-size:20px">
+امیرعلی بهجت
+</div>
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+<div style="color:#849bad;font-family:Tahoma;font-size:11px;margin-top:8px">
+مدیر اصلی و دارای تمام دسترسی‌های پنل
+</div>
 
-function showPanel(name,button){
+</div>
 
-    document.querySelectorAll(".panel").forEach(panel=>{
-        panel.classList.remove("active");
-    });
 
-    const target =
-        document.getElementById("panel-"+name);
+<div class="card">
 
-    if(target){
-        target.classList.add("active");
-    }
+<div class="title">
+<h2>📢 پیام مدیریتی</h2>
+</div>
 
-    document.querySelectorAll(".nav button").forEach(btn=>{
-        btn.classList.remove("active");
-    });
+<div id="dashboardNotice" style="
+background:#06342e;
+border:1px solid #087e61;
+border-radius:14px;
+padding:15px
+">
+هنوز پیامی ثبت نشده است.
+</div>
 
-    if(button){
-        button.classList.add("active");
-    }
+</div>
 
-}
 
+<div class="card full">
 
-/* =========================================================
-   STORAGE HELPERS
-========================================================= */
+<div class="title">
+<h2>⚽ بازی این هفته</h2>
+</div>
 
-function getData(key,defaultValue){
+<div class="formGrid">
 
-    try{
+<div>📅 تاریخ: <strong id="dDate">تعیین نشده</strong></div>
+<div>🕐 ساعت: <strong id="dTime">تعیین نشده</strong></div>
+<div>📍 مکان: <strong id="dPlace">تعیین نشده</strong></div>
+<div>👥 ظرفیت: <strong id="dCapacity">تعیین نشده</strong></div>
 
-        const value = localStorage.getItem(key);
+</div>
 
-        return value
-            ? JSON.parse(value)
-            : defaultValue;
+</div>
 
-    }catch(e){
+</div>
 
-        return defaultValue;
+</section>
 
-    }
 
-}
+<!-- PLAYERS -->
 
-function setData(key,value){
+<section id="players" class="panel">
 
-    localStorage.setItem(
-        key,
-        JSON.stringify(value)
-    );
+<div class="card">
 
-}
+<div class="title">
 
-function toast(message){
+<h2>👥 لیست بازیکنان</h2>
 
-    const t =
-        document.getElementById("toast");
+<button class="btn greenBtn" onclick="addPlayer()">
+＋ افزودن بازیکن
+</button>
 
-    t.textContent=message;
+</div>
 
-    t.classList.add("show");
+<div class="tableWrap">
 
-    setTimeout(()=>{
-        t.classList.remove("show");
-    },2500);
+<table>
 
-}
+<thead>
+<tr>
+<th>نام</th>
+<th>شماره تلفن</th>
+<th>حضور</th>
+<th>پرداخت</th>
+<th>عملیات</th>
+</tr>
+</thead>
 
+<tbody id="playersTable"></tbody>
 
-/* =========================================================
-   PLAYERS
-========================================================= */
+</table>
 
-function players(){
+</div>
 
-    return getData("players",[
-        {
-            id:1,
-            name:"امیرعلی بهجت",
-            phone:"۰۹۱۲***",
-            present:true,
-            payment:"paid",
-            tracking:"PAY-001",
-            receipt:"رسید ثبت شده"
-        },
-        {
-            id:2,
-            name:"علی محمدی",
-            phone:"۰۹۱۰***",
-            present:true,
-            payment:"wait",
-            tracking:"PAY-002",
-            receipt:"رسید ثبت شده"
-        },
-        {
-            id:3,
-            name:"رضا کریمی",
-            phone:"۰۹۳۵***",
-            present:false,
-            payment:"unpaid",
-            tracking:"",
-            receipt:"بدون رسید"
-        }
-    ]);
+</div>
 
-}
+</section>
 
-function renderPlayers(){
 
-    const data=players();
+<!-- PAYMENTS -->
 
-    const table =
-        document.getElementById("playersTable");
+<section id="payments" class="panel">
 
-    table.innerHTML="";
+<div class="card">
 
-    data.forEach(p=>{
+<div class="title">
+<h2>💳 مدیریت پرداخت‌ها</h2>
+</div>
 
-        const tr=document.createElement("tr");
+<div class="tableWrap">
 
-        tr.innerHTML=`
+<table>
 
-            <td>${escapeHTML(p.name)}</td>
+<thead>
+<tr>
+<th>نام</th>
+<th>تلفن</th>
+<th>پیگیری</th>
+<th>رسید</th>
+<th>وضعیت</th>
+<th>عملیات</th>
+</tr>
+</thead>
 
-            <td>${escapeHTML(p.phone||"-")}</td>
+<tbody id="paymentsTable"></tbody>
 
-            <td>
-                <span class="status ${p.present?'paid':'unpaid'}">
-                    ${p.present?'حاضر':'غایب'}
-                </span>
-            </td>
+</table>
 
-            <td>
-                <span class="status ${paymentClass(p.payment)}">
-                    ${paymentText(p.payment)}
-                </span>
-            </td>
+</div>
 
-            <td>
+</div>
 
-                <button
-                    class="action-btn blue-btn"
-                    onclick="togglePresent(${p.id})">
-                    ${p.present?'غایب کردن':'حاضر کردن'}
-                </button>
-                <button
-                    class="action-btn danger"
-                    onclick="deletePlayer(${p.id})">
-                    حذف
-                </button>
+</section>
 
-            </td>
-        ;
 
-        table.appendChild(tr);
+<!-- GAME -->
 
-    });
+<section id="game" class="panel">
 
-}
+<div class="card">
 
-function addPlayer(){
+<div class="title">
+<h2>⚽ اطلاعات بازی هفته</h2>
+</div>
 
-    const name =
-        prompt("نام بازیکن جدید:");
+<div class="formGrid">
 
-    if(!name) return;
+<div>
+<label>📅 تاریخ</label>
+<input id="gameDate" class="input" placeholder="مثلاً پنجشنبه ۲۵ شهریور">
+</div>
 
-    const phone =
-        prompt("شماره تلفن:");
+<div>
+<label>🕐 ساعت</label>
+<input id="gameTime" class="input" placeholder="مثلاً ۱۸:۰۰">
+</div>
 
-    const data=players();
+<div>
+<label>📍 مکان</label>
+<input id="gamePlace" class="input" placeholder="نام سالن">
+</div>
 
-    data.push({
+<div>
+<label>👥 ظرفیت</label>
+<input id="gameCapacity" class="input" type="number" placeholder="مثلاً ۲۰">
+</div>
 
-        id:Date.now(),
-        name:name,
-        phone:phone||"",
-        present:true,
-        payment:"unpaid",
-        tracking:"",
-        receipt:""
+</div>
 
-    });
+<label>🗺️ لینک لوکیشن</label>
 
-    setData("players",data);
+<input id="gameLocation" class="input" placeholder="لینک Google Maps">
 
-    loadAll();
+<button class="btn greenBtn" onclick="saveGame()">
+💾 ذخیره اطلاعات بازی
+</button>
 
-    toast("✅ بازیکن اضافه شد.");
+</div>
 
-}
+</section>
 
-function deletePlayer(id){
 
-    if(!confirm("آیا از حذف این بازیکن مطمئن هستید؟")){
-        return;
-    }
+<!-- POLL -->
 
-    const data =
-        players().filter(p=>p.id!==id);
+<section id="poll" class="panel">
 
-    setData("players",data);
+<div class="grid">
 
-    loadAll();
+<div class="card">
 
-    toast("🗑️ بازیکن حذف شد.");
+<div class="title">
+<h2>📊 ایجاد نظرسنجی</h2>
+</div>
 
-}
+<label>متن سؤال</label>
 
-function togglePresent(id){
+<input
+id="question"
+class="input"
+placeholder="مثلاً این هفته در بازی شرکت می‌کنی؟"
+>
 
-    const data=players();
+<div id="options"></div>
 
-    const player=data.find(p=>p.id===id);
+<div class="actions">
 
-    if(player){
-        player.present=!player.present;
-    }
+<button class="btn blueBtn" onclick="addOption()">
+＋ گزینه
+</button>
 
-    setData("players",data);
+<button class="btn greenBtn" onclick="savePoll()">
+💾 ذخیره
+</button>
 
-    loadAll();
+<button class="btn redBtn" onclick="deletePoll()">
+حذف
+</button>
 
-}
+</div>
 
-function paymentClass(status){
+</div>
 
-    if(status==="paid") return "paid";
-    if(status==="wait") return "wait";
-    return "unpaid";
 
-}
+<div class="card">
 
-function paymentText(status){
+<div class="title">
+<h2>📈 نتایج</h2>
+</div>
+let value=
+document.getElementById("noticeInput")
+.value.trim();
 
-    if(status==="paid") return "پرداخت‌شده";
-    if(status==="wait") return "در انتظار بررسی";
-    return "پرداخت‌نشده";
+localStorage.setItem(
+"notice",
+value
+);
 
-}
+renderNotice();
 
-
-/* =========================================================
-   PAYMENTS
-========================================================= */
-
-function renderPayments(){
-
-    const table =
-        document.getElementById("paymentsTable");
-
-    table.innerHTML="";
-
-    players().forEach(p=>{
-
-        const tr=document.createElement("tr");
-
-        tr.innerHTML=
-
-            <td>${escapeHTML(p.name)}</td>
-
-            <td>${escapeHTML(p.phone||"-")}</td>
-
-            <td>${escapeHTML(p.tracking||"ثبت نشده")}</td>
-
-            <td>${escapeHTML(p.receipt||"ثبت نشده")}</td>
-
-            <td>
-                <span class="status ${paymentClass(p.payment)}">
-                    ${paymentText(p.payment)}
-                </span>
-            </td>
-
-            <td>
-
-                <button
-                    class="action-btn save"
-                    onclick="changePayment(${p.id},'paid')">
-                    تأیید
-                </button>
-
-                <button
-                    class="action-btn warning"
-                    onclick="changePayment(${p.id},'wait')">
-                    انتظار
-                </button>
-
-                <button
-                    class="action-btn danger"
-                    onclick="changePayment(${p.id},'unpaid')">
-                    رد
-                </button>
-
-            </td>
-        `;
-
-        table.appendChild(tr);
-
-    });
-
-}
-
-function changePayment(id,status){
-
-    const data=players();
-
-    const player=data.find(p=>p.id===id);
-
-    if(player){
-
-        player.payment=status;
-
-    }
-
-    setData("players",data);
-
-    loadAll();
-
-    toast(
-        status==="paid"
-        ? "✅ پرداخت تأیید شد."
-        : status==="wait"
-        ? "⏳ پرداخت در انتظار بررسی قرار گرفت."
-        : "❌ پرداخت رد شد."
-    );
-
-}
-
-
-/* =========================================================
-   GAME
-========================================================= */
-
-function saveGame(){
-
-    const game={
-
-        date:document.getElementById("gameDate").value,
-
-        time:document.getElementById("gameTime").value,
-
-        place:document.getElementById("gamePlace").value,
-
-        capacity:document.getElementById("gameCapacity").value,
-
-        location:document.getElementById("gameLocation").value
-
-    };
-
-    setData("gameData",game);
-
-    renderGame();
-
-    toast("✅ اطلاعات بازی ذخیره شد.");
-
-}
-
-function renderGame(){
-
-    const game =
-        getData("gameData",{
-            date:"",
-            time:"",
-            place:"",
-            capacity:"",
-            location:""
-        });
-    <button
-                    class="action-btn danger"
-                    onclick="deletePlayer(${p.id})">
-                    حذف
-                </button>
-
-            </td>
-        ;
-
-        table.appendChild(tr);
-
-    });
-
-}
-
-function addPlayer(){
-
-    const name =
-        prompt("نام بازیکن جدید:");
-
-    if(!name) return;
-
-    const phone =
-        prompt("شماره تلفن:");
-
-    const data=players();
-
-    data.push({
-
-        id:Date.now(),
-        name:name,
-        phone:phone||"",
-        present:true,
-        payment:"unpaid",
-        tracking:"",
-        receipt:""
-
-    });
-
-    setData("players",data);
-
-    loadAll();
-
-    toast("✅ بازیکن اضافه شد.");
-
-}
-
-function deletePlayer(id){
-
-    if(!confirm("آیا از حذف این بازیکن مطمئن هستید؟")){
-        return;
-    }
-
-    const data =
-        players().filter(p=>p.id!==id);
-
-    setData("players",data);
-
-    loadAll();
-
-    toast("🗑️ بازیکن حذف شد.");
-
-}
-
-function togglePresent(id){
-
-    const data=players();
-
-    const player=data.find(p=>p.id===id);
-
-    if(player){
-        player.present=!player.present;
-    }
-
-    setData("players",data);
-
-    loadAll();
-
-}
-
-function paymentClass(status){
-
-    if(status==="paid") return "paid";
-    if(status==="wait") return "wait";
-    return "unpaid";
-
-}
-
-function paymentText(status){
-
-    if(status==="paid") return "پرداخت‌شده";
-    if(status==="wait") return "در انتظار بررسی";
-    return "پرداخت‌نشده";
-
-}
-
-
-/* =========================================================
-   PAYMENTS
-========================================================= */
-
-function renderPayments(){
-
-    const table =
-        document.getElementById("paymentsTable");
-
-    table.innerHTML="";
-
-    players().forEach(p=>{
-
-        const tr=document.createElement("tr");
-
-        tr.innerHTML=
-
-            <td>${escapeHTML(p.name)}</td>
-
-            <td>${escapeHTML(p.phone||"-")}</td>
-
-            <td>${escapeHTML(p.tracking||"ثبت نشده")}</td>
-
-            <td>${escapeHTML(p.receipt||"ثبت نشده")}</td>
-
-            <td>
-                <span class="status ${paymentClass(p.payment)}">
-                    ${paymentText(p.payment)}
-                </span>
-            </td>
-
-            <td>
-
-                <button
-                    class="action-btn save"
-                    onclick="changePayment(${p.id},'paid')">
-                    تأیید
-                </button>
-
-                <button
-                    class="action-btn warning"
-                    onclick="changePayment(${p.id},'wait')">
-                    انتظار
-                </button>
-
-                <button
-                    class="action-btn danger"
-                    onclick="changePayment(${p.id},'unpaid')">
-                    رد
-                </button>
-
-            </td>
-        `;
-
-        table.appendChild(tr);
-
-    });
-
-}
-
-function changePayment(id,status){
-
-    const data=players();
-
-    const player=data.find(p=>p.id===id);
-
-    if(player){
-
-        player.payment=status;
-
-    }
-
-    setData("players",data);
-
-    loadAll();
-
-    toast(
-        status==="paid"
-        ? "✅ پرداخت تأیید شد."
-        : status==="wait"
-        ? "⏳ پرداخت در انتظار بررسی قرار گرفت."
-        : "❌ پرداخت رد شد."
-    );
-
-}
-
-
-/* =========================================================
-   GAME
-========================================================= */
-
-function saveGame(){
-
-    const game={
-
-        date:document.getElementById("gameDate").value,
-
-        time:document.getElementById("gameTime").value,
-
-        place:document.getElementById("gamePlace").value,
-
-        capacity:document.getElementById("gameCapacity").value,
-
-        location:document.getElementById("gameLocation").value
-
-    };
-
-    setData("gameData",game);
-
-    renderGame();
-
-    toast("✅ اطلاعات بازی ذخیره شد.");
-
-}
-
-function renderGame(){
-
-    const game =
-        getData("gameData",{
-            date:"",
-            time:"",
-            place:"",
-            capacity:"",
-            location:""
-        });
-        document.getElementById("gameDate").value=game.date||"";
-    document.getElementById("gameTime").value=game.time||"";
-    document.getElementById("gamePlace").value=game.place||"";
-    document.getElementById("gameCapacity").value=game.capacity||"";
-    document.getElementById("gameLocation").value=game.location||"";
-
-    document.getElementById("dashDate").textContent =
-        game.date||"تعیین نشده";
-
-    document.getElementById("dashTime").textContent =
-        game.time||"تعیین نشده";
-
-    document.getElementById("dashPlace").textContent =
-        game.place||"تعیین نشده";
-
-    document.getElementById("dashCapacity").textContent =
-        game.capacity
-        ? game.capacity+" نفر"
-        : "تعیین نشده";
-
-}
-
-
-/* =========================================================
-   POLL
-========================================================= */
-
-function addPollOption(value=""){
-
-    const container =
-        document.getElementById("pollOptions");
-
-    const row=document.createElement("div");
-
-    row.className="poll-option";
-
-    row.innerHTML=
-
-        <input
-            class="input"
-            value="${escapeAttr(value)}"
-            placeholder="متن گزینه">
-
-        <button
-            class="remove-option"
-            onclick="this.parentElement.remove()">
-            ×
-        </button>
-
-    ;
-
-    container.appendChild(row);
-
-}
-
-function savePoll(){
-
-    const question =
-        document.getElementById("pollQuestion").value.trim();
-
-    const options =
-        [...document.querySelectorAll("#pollOptions input")]
-        .map(x=>x.value.trim())
-        .filter(Boolean);
-
-    if(!question){
-
-        alert("متن سؤال را وارد کنید.");
-
-        return;
-
-    }
-
-    if(options.length<2){
-
-        alert("حداقل دو گزینه وارد کنید.");
-
-        return;
-
-    }
-
-    setData("pollData",{
-
-        question:question,
-        options:options,
-        results:options.map(()=>0)
-
-    });
-
-    renderPoll();
-
-    toast("✅ نظرسنجی ذخیره شد.");
-
-}
-
-function deletePoll(){
-
-    if(!confirm("نظرسنجی حذف شود؟")){
-        return;
-    }
-
-    localStorage.removeItem("pollData");
-
-    renderPoll();
-
-    toast("🗑️ نظرسنجی حذف شد.");
-
-}
-
-function renderPoll(){
-
-    const poll =
-        getData("pollData",null);
-
-    const container =
-        document.getElementById("pollOptions");
-
-    container.innerHTML="";
-
-    if(!poll){
-
-        document.getElementById("pollQuestion").value="";
-
-        document.getElementById("pollResults").innerHTML =
-            "هنوز نظرسنجی ایجاد نشده است.";
-
-        addPollOption("بله، شرکت می‌کنم");
-        addPollOption("خیر، شرکت نمی‌کنم");
-
-        return;
-
-    }
-
-    document.getElementById("pollQuestion").value =
-        poll.question;
-
-    poll.options.forEach(option=>{
-        addPollOption(option);
-    });
-
-    const results=poll.results||[];
-
-    let html="";
-
-    poll.options.forEach((option,i)=>{
-
-        html+=
-
-            <div style="
-                margin-bottom:12px;
-                background:#061a2a;
-                border:1px solid #143c58;
-                padding:12px;
-                border-radius:12px;
-            ">
-
-                ${escapeHTML(option)}
-
-                <strong style="float:left;color:#24f0a5">
-                    ${results[i]||0} رأی
-                </strong>
-
-            </div>
-
-        ;
-
-    });
-
-    document.getElementById("pollResults").innerHTML=html;
-
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
-
-function messages(){
-
-    return getData("messages",[
-        {
-            id:1,
-            name:"علی محمدی",
-            text:"سلام، بازی این هفته ساعت چند شروع میشه؟",
-            date:"۱۴۰۵/۰۶/۲۴ - ۱۵:۳۰",
-            reply:""
-        },
-        {
-            id:2,
-            name:"رضا کریمی",
-            text:"آیا میشه لوکیشن سالن رو بفرستید؟",
-            date:"۱۴۰۵/۰۶/۲۴ - ۱۶:۱۰",
-            reply:""
-        }
-    ]);
-
-}
-
-function renderMessages(){
-
-    const container =
-        document.getElementById("messagesList");
-
-    const data=messages();
-    if(!data.length){
-
-        container.innerHTML =
-            "پیامی وجود ندارد.";
-
-        return;
-
-    }
-
-    container.innerHTML="";
-
-    data.forEach(m=>{
-
-        const div=document.createElement("div");
-
-        div.className="message";
-
-        div.innerHTML=
-
-            <div class="message-head">
-
-                <div class="message-name">
-                    👤 ${escapeHTML(m.name)}
-                </div>
-
-                <div class="message-date">
-                    ${escapeHTML(m.date||"")}
-                </div>
-
-            </div>
-
-            <div class="message-text">
-                ${escapeHTML(m.text)}
-            </div>
-
-            ${
-                m.reply
-                ?
-                <div style="
-                    margin-top:10px;
-                    color:#56f2ba;
-                    font-family:Tahoma;
-                    font-size:12px;
-                ">
-                    پاسخ مدیر:
-                    ${escapeHTML(m.reply)}
-                </div>
-                :
-                ""
-            }
-
-            <div class="reply-box">
-
-                <input
-                    id="reply-${m.id}"
-                    class="input"
-                    placeholder="پاسخ مدیر...">
-
-                <button
-                    class="action-btn save"
-                    onclick="replyMessage(${m.id})">
-                    پاسخ
-                </button>
-
-                <button
-                    class="action-btn danger"
-                    onclick="deleteMessage(${m.id})">
-                    حذف
-                </button>
-
-            </div>
-        ;
-
-        container.appendChild(div);
-
-    });
-
-}
-
-function replyMessage(id){
-
-    const input =
-        document.getElementById("reply-"+id);
-
-    const value=input.value.trim();
-
-    if(!value) return;
-
-    const data=messages();
-
-    const message=data.find(m=>m.id===id);
-
-    if(message){
-        message.reply=value;
-    }
-
-    setData("messages",data);
-
-    renderMessages();
-
-    toast("✅ پاسخ ارسال شد.");
-
-}
-
-function deleteMessage(id){
-
-    if(!confirm("این پیام حذف شود؟")){
-        return;
-    }
-
-    const data =
-        messages().filter(m=>m.id!==id);
-
-    setData("messages",data);
-
-    renderMessages();
-
-    toast("🗑️ پیام حذف شد.");
-
-}
-
-
-/* =========================================================
-   NOTICE
-========================================================= */
-
-function saveNotice(){
-
-    const value =
-        document.getElementById("noticeInput").value.trim();
-
-    setData("adminNotice",value);
-
-    renderNotice();
-
-    toast("✅ پیام مدیریتی ذخیره شد.");
+toast("پیام مدیریتی ذخیره شد.");
 
 }
 
 function renderNotice(){
 
-    const notice =
-        localStorage.getItem("adminNotice")||"";
+let value=
+localStorage.getItem("notice")||"";
 
-    document.getElementById("noticeInput").value =
-        notice;
+document.getElementById("noticeInput").value=value;
 
-    const text =
-        notice||"هنوز پیامی ثبت نشده است.";
-
-    document.getElementById("noticePreview").textContent =
-        text;
-
-    document.getElementById("dashboardNotice").textContent =
-        text;
+document.getElementById("dashboardNotice")
+.textContent=
+value||"هنوز پیامی ثبت نشده است.";
 
 }
 
 
-/* =========================================================
-   MANAGERS
-========================================================= */
-
-function managers(){
-
-    return getData("managers",[
-        {
-            id:1,
-            name:"امیرعلی بهجت",
-            role:"مدیر اصلی",
-            main:true
-        },
-        {
-            id:2,
-            name:"علی محمدی",
-            role:"مدیر",
-            main:false
-        },
-        {
-            id:3,
-            name:"رضا کریمی",
-            role:"مدیر",
-            main:false
-        }
-    ]);
-
-}
-
-function renderManagers(){
-
-    const container =
-        document.getElementById("managerList");
-
-    container.innerHTML="";
-
-    managers().forEach(m=>{
-
-        const div=document.createElement("div");
-
-        div.className =
-            "manager"+(m.main?" main":"");
-
-        div.innerHTML=`
-
-            <div class="manager-avatar">
-                ${m.main?"👑":"👤"}
-            </div>
-
-            <div style="font-size:18px">
-                ${escapeHTML(m.name)}
-            </div>
-    <div class="manager-role">
-                ${escapeHTML(m.role)}
-            </div>
-
-            ${
-                m.main
-                ?
-                <div style="
-                    color:#8198aa;
-                    font-family:Tahoma;
-                    font-size:10px;
-                    margin-top:9px;
-                ">
-                    دسترسی کامل
-                </div>
-                :
-                
-                <div class="action-row"
-                     style="justify-content:center">
-
-                    <button
-                        class="action-btn blue-btn"
-                        onclick="editManager(${m.id})">
-                        سطح دسترسی
-                    </button>
-
-                    <button
-                        class="action-btn danger"
-                        onclick="deleteManager(${m.id})">
-                        حذف
-                    </button>
-
-                </div>
-                
-            }
-
-        ;
-
-        container.appendChild(div);
-
-    });
-
-}
-
-function addManager(){
-
-    const name =
-        prompt("نام مدیر جدید:");
-
-    if(!name) return;
-
-    const role =
-        prompt(
-            "سطح دسترسی را وارد کنید:\n"+
-            "مدیر کامل\n"+
-            "مدیر بازیکنان\n"+
-            "مدیر پرداخت‌ها\n"+
-            "مدیر پیام‌ها"
-        );
-
-    if(!role) return;
-
-    const data=managers();
-
-    data.push({
-
-        id:Date.now(),
-        name:name,
-        role:role,
-        main:false
-
-    });
-
-    setData("managers",data);
-
-    renderManagers();
-
-    toast("✅ مدیر جدید اضافه شد.");
-
-}
-
-function editManager(id){
-
-    const data=managers();
-
-    const manager =
-        data.find(m=>m.id===id);
-
-    if(!manager) return;
-
-    const role =
-        prompt(
-            "سطح دسترسی جدید:",
-            manager.role
-        );
-
-    if(!role) return;
-
-    manager.role=role;
-
-    setData("managers",data);
-
-    renderManagers();
-
-    toast("✅ سطح دسترسی تغییر کرد.");
-
-}
-
-function deleteManager(id){
-
-    if(!confirm("این مدیر حذف شود؟")){
-        return;
-    }
-
-    const data =
-        managers().filter(m=>m.id!==id);
-
-    setData("managers",data);
-
-    renderManagers();
-
-    toast("🗑️ مدیر حذف شد.");
-
-}
-
-
-/* =========================================================
+/* =========================
    STATS
-========================================================= */
+========================= */
 
-function updateStats(){
+function stats(){
 
-    const data=players();
+let data=getPlayers();
 
-    const total=data.length;
+let total=data.length;
 
-    const present=
-        data.filter(p=>p.present).length;
+let present=data.filter(x=>x.present).length;
 
-    const paid=
-        data.filter(p=>p.payment==="paid").length;
+let paid=data.filter(x=>x.payment==="paid").length;
 
-    const unpaid=
-        data.filter(p=>p.payment!=="paid").length;
+let unpaid=data.filter(x=>x.payment!=="paid").length;
 
-    document.getElementById("totalPlayers").textContent=total;
-    document.getElementById("presentPlayers").textContent=present;
-    document.getElementById("paidPlayers").textContent=paid;
-    document.getElementById("unpaidPlayers").textContent=unpaid;
+document.getElementById("total").textContent=total;
+document.getElementById("present").textContent=present;
+document.getElementById("paid").textContent=paid;
+document.getElementById("unpaid").textContent=unpaid;
 
-    document.getElementById("statTotal").textContent=total;
-    document.getElementById("statPresent").textContent=present;
-    document.getElementById("statPaid").textContent=paid;
-    document.getElementById("statUnpaid").textContent=unpaid;
-
-    document.getElementById("statsSummary").innerHTML=
-
-        <div>
-            👥 کل بازیکنان:
-            <strong>${total}</strong>
-        </div>
-
-        <div>
-            ⚽ حاضر:
-            <strong>${present}</strong>
-        </div>
-
-        <div>
-            💳 پرداخت‌شده:
-            <strong>${paid}</strong>
-        </div>
-
-        <div>
-            ❌ پرداخت‌نشده یا در انتظار:
-            <strong>${unpaid}</strong>
-        </div>
-
-    `;
+document.getElementById("sTotal").textContent=total;
+document.getElementById("sPresent").textContent=present;
+document.getElementById("sPaid").textContent=paid;
+document.getElementById("sUnpaid").textContent=unpaid;
 
 }
 
 
-/* =========================================================
+/* =========================
    LOAD
-========================================================= */
+========================= */
 
-function loadAll(){
+function load(){
 
-    renderPlayers();
-
-    renderPayments();
-
-    renderGame();
-
-    renderPoll();
-
-    renderMessages();
-
-    renderManagers();
-
-    renderNotice();
-
-    updateStats();
+renderPlayers();
+renderPayments();
+renderGame();
+renderPoll();
+renderMessages();
+renderManagers();
+renderNotice();
+stats();
 
 }
 
 
-/* =========================================================
-   SECURITY / HTML HELPERS
-========================================================= */
-function escapeHTML(value){
+/* =========================
+   HELPERS
+========================= */
 
-    return String(value??"")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+function safe(value){
 
-}
-
-function escapeAttr(value){
-
-    return escapeHTML(value);
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
+function toast(text){
 
-/* =========================================================
-   AUTO LOGIN
-========================================================= */
+let t=document.getElementById("toast");
 
-window.addEventListener("DOMContentLoaded",()=>{
+t.textContent=text;
 
-    if(sessionStorage.getItem("adminLoggedIn")==="true"){
+t.style.transform="translateY(0)";
+t.style.padding="12px 17px";
+t.style.borderRadius="13px";
+t.style.background="#07352a";
+t.style.border="1px solid #24efaa";
+t.style.color="#b9ffe7";
 
-        document.getElementById("loginScreen").style.display="none";
+setTimeout(()=>{
+t.style.transform="translateY(100px)";
+},2200);
 
-        document.getElementById("app").style.display="block";
+}
 
-        loadAll();
 
-    }else{
+/* =========================
+   START
+========================= */
 
-        document.getElementById("loginScreen").style.display="flex";
+window.addEventListener("load",function(){
 
-    }
+if(sessionStorage.getItem("adminLogin")==="yes"){
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("app").style.display="block";
+
+load();
+
+}else{
+
+document.getElementById("loginPage").style.display="flex";
+document.getElementById("app").style.display="none";
+
+}
 
 });
 
@@ -2608,3 +1002,928 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 </body>
 </html>
+    document.getElementById("playersTable").innerHTML=html;
+
+}
+
+function addPlayer(){
+
+let name=prompt("نام بازیکن:");
+
+if(!name)return;
+
+let phone=prompt("شماره تلفن:");
+
+let data=getPlayers();
+
+data.push({
+id:Date.now(),
+name:name,
+phone:phone||"",
+present:true,
+payment:"unpaid",
+tracking:"",
+receipt:"ندارد"
+});
+
+savePlayers(data);
+
+load();
+
+toast("بازیکن اضافه شد.");
+
+}
+
+function removePlayer(id){
+
+if(!confirm("بازیکن حذف شود؟"))return;
+
+let data=getPlayers()
+.filter(p=>p.id!==id);
+
+savePlayers(data);
+
+load();
+
+toast("بازیکن حذف شد.");
+
+}
+
+function togglePresent(id){
+
+let data=getPlayers();
+
+let p=data.find(x=>x.id===id);
+
+if(p)p.present=!p.present;
+
+savePlayers(data);
+
+load();
+
+}
+
+function paymentText(x){
+
+if(x==="paid")return"پرداخت‌شده";
+if(x==="wait")return"در انتظار بررسی";
+return"پرداخت‌نشده";
+
+}
+
+
+/* =========================
+   PAYMENTS
+========================= */
+
+function renderPayments(){
+
+let data=getPlayers();
+
+let html="";
+
+data.forEach(p=>{
+
+html+=
+
+<tr>
+
+<td>${safe(p.name)}</td>
+<td>${safe(p.phone)}</td>
+<td>${safe(p.tracking||"ثبت نشده")}</td>
+<td>${safe(p.receipt||"ثبت نشده")}</td>
+
+<td>
+<span class="status ${p.payment}">
+${paymentText(p.payment)}
+</span>
+</td>
+
+<td>
+
+<button class="btn greenBtn"
+onclick="payment(${p.id},'paid')">
+تأیید
+</button>
+
+<button class="btn yellowBtn"
+onclick="payment(${p.id},'wait')">
+انتظار
+</button>
+
+<button class="btn redBtn"
+onclick="payment(${p.id},'unpaid')">
+رد
+</button>
+
+</td>
+
+</tr>
+
+;
+
+});
+
+document.getElementById("paymentsTable").innerHTML=html;
+
+}
+
+function payment(id,status){
+
+let data=getPlayers();
+
+let p=data.find(x=>x.id===id);
+
+if(p)p.payment=status;
+
+savePlayers(data);
+
+load();
+
+toast(
+status==="paid"
+?"پرداخت تأیید شد."
+:status==="wait"
+?"در انتظار بررسی قرار گرفت."
+:"پرداخت رد شد."
+);
+
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+function saveGame(){
+
+let game={
+date:document.getElementById("gameDate").value,
+time:document.getElementById("gameTime").value,
+place:document.getElementById("gamePlace").value,
+capacity:document.getElementById("gameCapacity").value,
+location:document.getElementById("gameLocation").value
+};
+
+localStorage.setItem("game",JSON.stringify(game));
+
+renderGame();
+
+toast("اطلاعات بازی ذخیره شد.");
+
+}
+
+function renderGame(){
+
+let game=JSON.parse(
+localStorage.getItem("game")||"{}"
+);
+
+document.getElementById("gameDate").value=game.date||"";
+document.getElementById("gameTime").value=game.time||"";
+document.getElementById("gamePlace").value=game.place||"";
+document.getElementById("gameCapacity").value=game.capacity||"";
+document.getElementById("gameLocation").value=game.location||"";
+
+document.getElementById("dDate").textContent=
+game.date||"تعیین نشده";
+
+document.getElementById("dTime").textContent=
+game.time||"تعیین نشده";
+
+document.getElementById("dPlace").textContent=
+game.place||"تعیین نشده";
+
+document.getElementById("dCapacity").textContent=
+game.capacity?game.capacity+" نفر":"تعیین نشده";
+
+}
+
+
+/* =========================
+   POLL
+========================= */
+
+function addOption(value=""){
+
+let row=document.createElement("div");
+
+row.style.display="flex";
+row.style.gap="7px";
+
+row.innerHTML=
+
+<input class="input" value="${safe(value)}"
+placeholder="متن گزینه">
+
+<button class="btn redBtn"
+onclick="this.parentElement.remove()">
+×
+</button>
+
+;
+
+document.getElementById("options")
+.appendChild(row);
+
+}
+
+function savePoll(){
+
+let question=
+document.getElementById("question").value.trim();
+
+let options=
+[...document.querySelectorAll("#options input")]
+.map(x=>x.value.trim())
+.filter(Boolean);
+
+if(!question){
+
+alert("سؤال را وارد کنید.");
+return;
+
+}
+
+if(options.length<2){
+
+alert("حداقل دو گزینه وارد کنید.");
+return;
+
+}
+
+localStorage.setItem(
+"poll",
+JSON.stringify({
+question:question,
+options:options,
+results:options.map(()=>0)
+})
+);
+
+renderPoll();
+
+toast("نظرسنجی ذخیره شد.");
+
+}
+
+function renderPoll(){
+
+let poll=JSON.parse(
+localStorage.getItem("poll")||"null"
+);
+
+let box=document.getElementById("options");
+
+box.innerHTML="";
+
+if(!poll){
+
+document.getElementById("question").value="";
+    addOption("بله، شرکت می‌کنم");
+addOption("خیر، شرکت نمی‌کنم");
+
+document.getElementById("results").textContent=
+"نظرسنجی ایجاد نشده است.";
+
+return;
+
+}
+
+document.getElementById("question").value=
+poll.question;
+
+poll.options.forEach(x=>addOption(x));
+
+let html="";
+
+poll.options.forEach((x,i)=>{
+
+html+=
+<div style="
+padding:10px;
+background:#061a2a;
+border:1px solid #143c57;
+border-radius:10px;
+margin-bottom:7px
+">
+${safe(x)}
+<span style="float:left;color:#24efaa">
+${poll.results[i]||0} رأی
+</span>
+</div>
+;
+
+});
+
+document.getElementById("results").innerHTML=html;
+
+}
+
+function deletePoll(){
+
+if(!confirm("نظرسنجی حذف شود؟"))return;
+
+localStorage.removeItem("poll");
+
+renderPoll();
+
+toast("نظرسنجی حذف شد.");
+
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+function getMessages(){
+
+return JSON.parse(
+localStorage.getItem("messages")||"[]"
+);
+
+}
+
+function renderMessages(){
+
+let data=getMessages();
+
+if(!data.length){
+
+document.getElementById("messagesList").innerHTML=
+"هنوز پیامی دریافت نشده است.";
+
+return;
+
+}
+
+let html="";
+
+data.forEach(m=>{
+
+html+=
+
+<div class="message">
+
+<div class="messageHead">
+
+<div class="messageName">
+👤 ${safe(m.name)}
+</div>
+
+<div class="messageDate">
+${safe(m.date||"")}
+</div>
+
+</div>
+
+<div class="messageText">
+${safe(m.text)}
+</div>
+
+<div class="actions">
+
+<input
+id="reply${m.id}"
+class="input"
+placeholder="پاسخ مدیر..."
+style="margin:0;flex:1"
+>
+
+<button
+class="btn greenBtn"
+onclick="replyMessage(${m.id})">
+پاسخ
+</button>
+
+<button
+class="btn redBtn"
+onclick="deleteMessage(${m.id})">
+حذف
+</button>
+
+</div>
+
+${m.reply?
+<div style="
+color:#43efaf;
+font-family:Tahoma;
+font-size:11px;
+margin-top:8px
+">
+پاسخ مدیر: ${safe(m.reply)}
+</div>:""}
+
+</div>
+
+;
+
+});
+
+document.getElementById("messagesList").innerHTML=html;
+
+}
+
+function replyMessage(id){
+
+let data=getMessages();
+
+let m=data.find(x=>x.id===id);
+
+let input=document.getElementById("reply"+id);
+
+if(m && input.value.trim()){
+
+m.reply=input.value.trim();
+
+localStorage.setItem(
+"messages",
+JSON.stringify(data)
+);
+
+renderMessages();
+
+toast("پاسخ ارسال شد.");
+
+}
+
+}
+
+function deleteMessage(id){
+
+if(!confirm("پیام حذف شود؟"))return;
+
+let data=getMessages()
+.filter(x=>x.id!==id);
+
+localStorage.setItem(
+"messages",
+JSON.stringify(data)
+);
+
+renderMessages();
+
+}
+
+
+/* =========================
+   MANAGERS
+========================= */
+
+function getManagers(){
+
+let data=localStorage.getItem("managers");
+
+if(data)return JSON.parse(data);
+
+return[
+
+{
+id:1,
+name:"امیرعلی بهجت",
+role:"مدیر اصلی",
+main:true
+}
+
+];
+
+}
+
+function renderManagers(){
+
+let data=getManagers();
+
+let html="";
+
+data.forEach(m=>{
+
+html+=
+
+<div class="manager ${m.main?"main":""}">
+
+<div class="managerIcon">
+${m.main?"👑":"👤"}
+</div>
+
+<div style="font-size:18px">
+${safe(m.name)}
+</div>
+
+<div class="managerRole">
+${safe(m.role)}
+</div>
+
+${!m.main?
+
+<div class="actions" style="justify-content:center">
+
+<button class="btn blueBtn"
+onclick="editManager(${m.id})">
+سطح دسترسی
+</button>
+
+<button class="btn redBtn"
+onclick="deleteManager(${m.id})">
+حذف
+</button>
+
+</div>
+
+:""}
+
+</div>
+
+;
+
+});
+
+document.getElementById("managerList").innerHTML=html;
+
+}
+
+function addManager(){
+
+let name=prompt("نام مدیر:");
+
+if(!name)return;
+
+let role=prompt(
+"سطح دسترسی:\nمدیر کامل\nمدیر بازیکنان\nمدیر پرداخت‌ها\nمدیر پیام‌ها"
+);
+
+if(!role)return;
+
+let data=getManagers();
+
+data.push({
+id:Date.now(),
+name:name,
+role:role,
+main:false
+});
+
+localStorage.setItem(
+"managers",
+JSON.stringify(data)
+);
+
+renderManagers();
+
+toast("مدیر اضافه شد.");
+
+}
+
+function editManager(id){
+
+let data=getManagers();
+
+let m=data.find(x=>x.id===id);
+
+if(!m)return;
+
+let role=prompt(
+"سطح دسترسی جدید:",
+m.role
+);
+
+if(!role)return;
+
+m.role=role;
+
+localStorage.setItem(
+"managers",
+JSON.stringify(data)
+);
+
+renderManagers();
+
+}
+
+function deleteManager(id){
+
+if(!confirm("مدیر حذف شود؟"))return;
+
+let data=getManagers()
+.filter(x=>x.id!==id);
+
+localStorage.setItem(
+"managers",
+JSON.stringify(data)
+);
+
+renderManagers();
+
+}
+
+
+/* =========================
+   NOTICE
+========================= */
+
+function saveNotice(){
+    <div id="results">
+نظرسنجی ایجاد نشده است.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MESSAGES -->
+
+<section id="messages" class="panel">
+
+<div class="card">
+
+<div class="title">
+<h2>💬 پیام‌های بچه‌ها</h2>
+</div>
+
+<div id="messagesList"></div>
+
+</div>
+
+</section>
+
+
+<!-- MANAGERS -->
+
+<section id="managers" class="panel">
+
+<div class="card">
+
+<div class="title">
+
+<h2>👨‍💼 مدیران</h2>
+
+<button class="btn greenBtn" onclick="addManager()">
+＋ افزودن مدیر
+</button>
+
+</div>
+
+<div style="color:#8197aa;font-family:Tahoma;font-size:11px;margin-bottom:15px">
+فقط مدیر اصلی می‌تواند مدیر اضافه، حذف یا سطح دسترسی را تغییر دهد.
+</div>
+
+<div id="managerList" class="managers"></div>
+
+</div>
+
+</section>
+
+
+<!-- NOTICE -->
+
+<section id="notice" class="panel">
+
+<div class="card">
+
+<div class="title">
+<h2>📢 پیام مدیریتی</h2>
+</div>
+
+<label>پیامی که در سایت بچه‌ها نمایش داده می‌شود</label>
+
+<textarea
+id="noticeInput"
+class="input"
+placeholder="متن پیام را بنویسید..."
+></textarea>
+
+<button class="btn greenBtn" onclick="saveNotice()">
+💾 ذخیره پیام
+</button>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section id="stats" class="panel">
+
+<div class="grid">
+
+<div class="card">
+
+<div class="title">
+<h2>👥 بازیکنان</h2>
+</div>
+
+<p>کل بازیکنان: <strong id="sTotal">0</strong></p>
+<p style="margin-top:8px">حاضر: <strong id="sPresent">0</strong></p>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+<h2>💳 پرداخت</h2>
+</div>
+
+<p>پرداخت‌شده: <strong id="sPaid">0</strong></p>
+<p style="margin-top:8px">پرداخت‌نشده: <strong id="sUnpaid">0</strong></p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<div id="toast"></div>
+
+
+<script>
+
+/* =========================
+   PASSWORD
+========================= */
+
+const ADMIN_PASSWORD = "atomicenergybnd";
+
+function login(){
+
+const password =
+document.getElementById("password").value.trim();
+
+if(password === ADMIN_PASSWORD){
+
+sessionStorage.setItem("adminLogin","yes");
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("app").style.display="block";
+
+load();
+
+}else{
+
+document.getElementById("error").textContent =
+"❌ رمز عبور اشتباه است.";
+
+}
+
+}
+
+document.getElementById("password")
+.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+login();
+}
+
+});
+
+
+function logout(){
+
+sessionStorage.removeItem("adminLogin");
+
+document.getElementById("app").style.display="none";
+document.getElementById("loginPage").style.display="flex";
+
+document.getElementById("password").value="";
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function panel(id,btn){
+
+document.querySelectorAll(".panel")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+document.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
+
+btn.classList.add("active");
+
+}
+
+
+/* =========================
+   DATA
+========================= */
+
+function getPlayers(){
+
+let data=localStorage.getItem("players");
+
+if(data){
+
+return JSON.parse(data);
+
+}
+
+return [
+
+{
+id:1,
+name:"امیرعلی بهجت",
+phone:"۰۹۱۲*******",
+present:true,
+payment:"paid",
+tracking:"PAY-001",
+receipt:"ثبت شده"
+},
+
+{
+id:2,
+name:"علی محمدی",
+phone:"۰۹۱۰*******",
+present:true,
+payment:"wait",
+tracking:"PAY-002",
+receipt:"ثبت شده"
+},
+
+{
+id:3,
+name:"رضا کریمی",
+phone:"۰۹۳۵*******",
+present:false,
+payment:"unpaid",
+tracking:"",
+receipt:"ندارد"
+}
+
+];
+
+}
+
+function savePlayers(data){
+
+localStorage.setItem(
+"players",
+JSON.stringify(data)
+);
+
+}
+
+
+/* =========================
+   PLAYERS
+========================= */
+
+function renderPlayers(){
+
+let data=getPlayers();
+
+let html="";
+
+data.forEach(p=>{
+
+html+=
+
+<tr>
+
+<td>${safe(p.name)}</td>
+
+<td>${safe(p.phone)}</td>
+
+<td>
+<span class="status ${p.present?"paid":"unpaid"}">
+${p.present?"حاضر":"غایب"}
+</span>
+</td>
+
+<td>
+<span class="status ${p.payment}">
+${paymentText(p.payment)}
+</span>
+</td>
+
+<td>
+
+<button class="btn blueBtn"
+onclick="togglePresent(${p.id})">
+${p.present?"غایب":"حاضر"}
+</button>
+
+<button class="btn redBtn"
+onclick="removePlayer(${p.id})">
+حذف
+</button>
+
+</td>
+
+</tr>
+
+;
+
+});
