@@ -1,57 +1,253 @@
-alert(
-            "بازیکن «"+name+"» اضافه شد.\n\n" +
-            "در نسخه متصل به دیتابیس، اطلاعات او در لیست ذخیره خواهد شد."
-        );
+toast.classList.add("show");
+
+    setTimeout(function(){
+        toast.classList.remove("show");
+    },2500);
+
+}
+
+
+/* PLAYER */
+
+function addPlayer(){
+
+    const name =
+        prompt("نام بازیکن را وارد کنید:");
+
+    if(!name) return;
+
+    const phone =
+        prompt("شماره تلفن بازیکن:");
+
+    const table =
+        document.querySelector("#playersTable tbody");
+
+    const row =
+        document.createElement("tr");
+
+    row.innerHTML = 
+        <td>جدید</td>
+        <td>${escapeHTML(name)}</td>
+        <td>${escapeHTML(phone || "-")}</td>
+        <td>
+            <span class="status paid">حاضر</span>
+        </td>
+        <td>
+            <span class="status unpaid">پرداخت‌نشده</span>
+        </td>
+        <td>—</td>
+        <td>
+            <button class="delete-btn"
+                    onclick="deleteRow(this)">
+                حذف
+            </button>
+        </td>
+    ;
+
+    table.appendChild(row);
+
+    showToast("بازیکن اضافه شد");
+
+}
+
+
+/* DELETE */
+
+function deleteRow(button){
+
+    if(confirm("آیا از حذف این مورد مطمئن هستید؟")){
+
+        button.closest("tr").remove();
+
+        showToast("مورد حذف شد");
 
     }
 
 }
 
 
-function addManager(){
+/* PAYMENT */
 
-    const name=prompt("نام مدیر جدید:");
+function approve(button){
 
-    if(name){
+    const row =
+        button.closest("tr");
 
-        alert(
-            "مدیر «"+name+"» ایجاد شد.\n\n" +
-            "سطح دسترسی را می‌توان تعیین کرد."
-        );
+    const status =
+        row.querySelector(".status");
 
-    }
+    status.className="status paid";
+    status.innerText="پرداخت‌شده";
+
+    button.parentElement.innerHTML =
+        '<span style="color:#4ff0aa">✓ تأیید شد</span>';
+
+    showToast("پرداخت تأیید شد");
 
 }
 
+
+function reject(button){
+
+    const row =
+        button.closest("tr");
+
+    const status =
+        row.querySelector(".status");
+
+    status.className="status unpaid";
+    status.innerText="رد شده";
+
+    button.parentElement.innerHTML =
+        '<span style="color:#ff708f">✕ رد شد</span>';
+
+    showToast("پرداخت رد شد");
+
+}
+
+
+/* POLL */
 
 function addOption(){
 
-    const div=document.createElement("div");
+    const wrapper =
+        document.getElementById("pollOptions");
 
-    div.className="option";
+    const row =
+        document.createElement("div");
 
-    div.innerHTML=
-        <input class="input" placeholder="گزینه جدید">
-        <button class="remove"
-        onclick="this.parentElement.remove()">×</button>
+    row.className="option-row";
+
+    row.innerHTML=
+        <input class="input"
+               placeholder="گزینه جدید">
+
+        <button class="delete-btn"
+                onclick="this.parentElement.remove()">
+            ×
+        </button>
     ;
 
-    document.getElementById("options")
-        .appendChild(div);
+    wrapper.appendChild(row);
 
 }
 
 
 function savePoll(){
 
-    alert("نظرسنجی ذخیره شد.");
+    showToast("نظرسنجی ذخیره شد ✓");
 
 }
 
 
+function deletePoll(){
+
+    if(confirm("نظرسنجی حذف شود؟")){
+
+        document
+        .getElementById("pollQuestion")
+        .value="";
+
+        document
+        .getElementById("pollOptions")
+        .innerHTML="";
+
+        showToast("نظرسنجی حذف شد");
+
+    }
+
+}
+
+
+/* GAME */
+
 function saveGame(){
 
-    alert("اطلاعات بازی با موفقیت ذخیره شد.");
+    showToast("اطلاعات بازی ذخیره شد ✓");
+
+}
+
+
+/* MESSAGE */
+
+function saveMessage(){
+
+    showToast("پیام مدیریتی ذخیره و منتشر شد ✓");
+
+}
+
+
+/* MANAGER */
+
+function addManager(){
+
+    const name =
+        prompt("نام مدیر جدید:");
+
+    if(!name) return;
+
+    const permission =
+        prompt(
+            "سطح دسترسی را وارد کنید:\n\n" +
+            "1 = مدیریت کامل\n" +
+            "2 = بازیکنان\n" +
+            "3 = پرداخت‌ها\n" +
+            "4 = پیام‌ها"
+        );
+
+    showToast(
+        "مدیر «"+name+"» اضافه شد"
+    );
+
+}
+
+
+function changePermission(){
+
+    const permission =
+        prompt(
+            "سطح دسترسی جدید:\n\n" +
+            "مدیریت کامل\n" +
+            "بازیکنان\n" +
+            "پرداخت‌ها\n" +
+            "پیام‌ها"
+        );
+
+    if(permission){
+
+        showToast("سطح دسترسی تغییر کرد");
+
+    }
+
+}
+
+
+/* REPLY */
+
+function replyMessage(){
+
+    const answer =
+        prompt("پاسخ مدیر را وارد کنید:");
+
+    if(answer){
+
+        showToast("پاسخ برای بازیکن ارسال شد ✓");
+
+    }
+
+}
+
+
+/* SECURITY HELPER */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
