@@ -1,42 +1,129 @@
-name:
-                document
-                .getElementById("messageName")
-                .value
-                .trim(),
+const tracking =
+        document.getElementById("tracking").value.trim();
 
-            message:
-                document
-                .getElementById("messageText")
-                .value
-                .trim(),
+    const receipt =
+        document.getElementById("receipt").files[0];
 
-            createdAt:
-                new Date().toISOString()
-
-        };
+    const description =
+        document.getElementById("description").value.trim();
 
 
-        const messages =
-            JSON.parse(
-                localStorage.getItem("adminMessages") || "[]"
-            );
+    if(!name ⠟⠵⠟⠵⠵⠵⠺⠺ !tracking || !receipt){
+
+        alert("لطفاً همه اطلاعات لازم را وارد کنید.");
+
+        return;
+    }
 
 
-        messages.push(message);
+    /*
+      فعلاً اطلاعات در مرورگر ذخیره می‌شود.
+      در مرحله بعد این قسمت را به دیتابیس آنلاین وصل می‌کنیم.
+    */
+
+    const payment = {
+
+        name:name,
+
+        phone:phone,
+
+        tracking:tracking,
+
+        receiptName:receipt.name,
+
+        description:description,
+
+        status:"پرداخت شده",
+
+        createdAt:new Date().toISOString()
+
+    };
 
 
-        localStorage.setItem(
-            "adminMessages",
-            JSON.stringify(messages)
+    let payments =
+        JSON.parse(
+            localStorage.getItem(PAYMENT_KEY) || "[]"
         );
 
 
-        document
-            .getElementById("messageSuccess")
-            .style.display = "block";
+    payments.push(payment);
 
 
-        this.reset();
+    localStorage.setItem(
+        PAYMENT_KEY,
+        JSON.stringify(payments)
+    );
+
+
+    document
+        .getElementById("paymentSuccess")
+        .classList.remove("hidden");
+
+
+    this.reset();
+
+});
+
+
+/* -----------------------------
+   پیام به مدیر
+----------------------------- */
+
+document
+.getElementById("messageForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById("messageName").value.trim();
+
+
+    const message =
+        document.getElementById("messageText").value.trim();
+
+
+    if(!name || !message){
+
+        alert("لطفاً نام و پیام را وارد کنید.");
+
+        return;
+    }
+
+
+    const newMessage = {
+
+        name:name,
+
+        message:message,
+
+        createdAt:new Date().toISOString()
+
+    };
+
+
+    let messages =
+        JSON.parse(
+            localStorage.getItem(MESSAGE_KEY) || "[]"
+        );
+
+
+    messages.push(newMessage);
+
+
+    localStorage.setItem(
+        MESSAGE_KEY,
+        JSON.stringify(messages)
+    );
+
+
+    document
+        .getElementById("messageSuccess")
+        .classList.remove("hidden");
+
+
+    this.reset();
 
 });
 
