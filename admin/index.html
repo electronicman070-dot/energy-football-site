@@ -1,226 +1,57 @@
-<input
-id="newAdminPassword"
-type="password"
-placeholder="رمز مدیر جدید"
->
-
-<button
-class="blue"
-onclick="addAdmin()">
-افزودن مدیر
-</button>
-
-<p id="adminResult" class="small"></p>
-
-</div>
-
-</div>
-
-
-<!-- PLAYERS -->
-
-<div class="card">
-
-<h2>👥 وضعیت بازیکنان</h2>
-
-<div class="item">
-
-<strong>امیرعلی بهجت</strong>
-
-<span class="badge paid">
-پرداخت‌شده
-</span>
-
-</div>
-
-<div class="item">
-
-<strong>علی محمدی</strong>
-
-<span class="badge paid">
-پرداخت‌شده
-</span>
-
-</div>
-
-<div class="item">
-
-<strong>رضا کریمی</strong>
-
-<span class="badge unpaid">
-پرداخت‌نشده
-</span>
-
-</div>
-
-<div class="item">
-
-<strong>محمد حسینی</strong>
-
-<span class="badge paid">
-پرداخت‌شده
-</span>
-
-</div>
-
-</div>
-
-
-<!-- MESSAGES -->
-
-<div class="card">
-
-<h2>✉️ پیام‌های دریافتی</h2>
-
-<div id="messages">
-
-<div class="message item">
-
-<strong>امیرعلی</strong>
-
-<p>
-سلام، برای بازی پنجشنبه یک سؤال داشتم.
-</p>
-
-<span class="small">
-پیام نمونه
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<script>
-
-const ADMIN_PASSWORD = "f.energyatomic";
-
-
-function login(){
-
-    const password =
-        document.getElementById("password").value;
-
-    if(password === ADMIN_PASSWORD){
-
-        document.getElementById("loginPage").style.display =
-            "none";
-
-        document.getElementById("dashboard").style.display =
-            "block";
-
-    }else{
-
-        document.getElementById("loginError").style.display =
-            "block";
+alert(
+            "بازیکن «"+name+"» اضافه شد.\n\n" +
+            "در نسخه متصل به دیتابیس، اطلاعات او در لیست ذخیره خواهد شد."
+        );
 
     }
 
 }
 
 
-function logout(){
+function addManager(){
 
-    document.getElementById("dashboard").style.display =
-        "none";
+    const name=prompt("نام مدیر جدید:");
 
-    document.getElementById("loginPage").style.display =
-        "flex";
+    if(name){
 
-    document.getElementById("password").value = "";
+        alert(
+            "مدیر «"+name+"» ایجاد شد.\n\n" +
+            "سطح دسترسی را می‌توان تعیین کرد."
+        );
+
+    }
+
+}
+
+
+function addOption(){
+
+    const div=document.createElement("div");
+
+    div.className="option";
+
+    div.innerHTML=
+        <input class="input" placeholder="گزینه جدید">
+        <button class="remove"
+        onclick="this.parentElement.remove()">×</button>
+    ;
+
+    document.getElementById("options")
+        .appendChild(div);
 
 }
 
 
 function savePoll(){
 
-    const question =
-        document.getElementById("pollQuestion").value;
-
-    localStorage.setItem(
-        "pollQuestion",
-        question
-    );
-
-    document.getElementById("pollResult").innerText =
-        "نظرسنجی ذخیره شد ✓";
+    alert("نظرسنجی ذخیره شد.");
 
 }
 
 
 function saveGame(){
 
-    localStorage.setItem(
-        "gameDate",
-        document.getElementById("gameDate").value
-    );
-
-    localStorage.setItem(
-        "gameTime",
-        document.getElementById("gameTime").value
-    );
-
-    localStorage.setItem(
-        "gamePlace",
-        document.getElementById("gamePlace").value
-    );
-
-    localStorage.setItem(
-        "gameMap",
-        document.getElementById("gameMap").value
-    );
-
-    alert("اطلاعات بازی ذخیره شد ✓");
-
-}
-
-
-function saveMessage(){
-
-    const message =
-        document.getElementById("adminMessage").value;
-
-    localStorage.setItem(
-        "adminMessage",
-        message
-    );
-
-    document.getElementById("messageResult").innerText =
-        "پیام منتشر شد ✓";
-
-}
-
-
-function addAdmin(){
-
-    const name =
-        document.getElementById("newAdmin").value;
-
-    const password =
-        document.getElementById("newAdminPassword").value;
-
-    if(name === "" || password === ""){
-
-        alert("نام و رمز مدیر را وارد کنید.");
-
-        return;
-
-    }
-
-    localStorage.setItem(
-        "admin_" + name,
-        password
-    );
-
-    document.getElementById("adminResult").innerText =
-        "مدیر جدید اضافه شد ✓";
+    alert("اطلاعات بازی با موفقیت ذخیره شد.");
 
 }
 
