@@ -2,155 +2,1615 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>بچه‌های سالن | مدرسه انرژی اتمی</title>
+
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#020b14;color:#f4f8fb;font-family:Vazirmatn,Tahoma,sans-serif}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 50% -10%,#123d5d,#061a29 38%,#020a12 80%)}
-body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.18;background-image:linear-gradient(115deg,transparent 20%,#1eeaa022 20.5%,transparent 21%),linear-gradient(70deg,transparent 40%,#1687ff14 40.5%,transparent 41%);background-size:180px 180px}
-.app{max-width:1100px;margin:auto;padding-bottom:105px}
-.header{height:128px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #15405b;background:linear-gradient(#03101cdd,#03101c66)}
-.brand{display:flex;align-items:center;gap:15px}
-.logo{width:78px;height:78px;border:2px solid #20e99b;border-radius:50%;display:grid;place-items:center;font-size:48px;background:#062338;box-shadow:0 0 30px #20e99b25}
-.brand h1{font-family:Lalezar;font-size:33px;line-height:1.05;margin:0}.brand h1:last-child{color:#20eca0}
-.header-icons{font-size:30px;display:flex;gap:22px}
-main{padding:25px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:linear-gradient(145deg,#0a263bdf,#051827e8);border:1px solid #174c6c;border-radius:24px;padding:22px;box-shadow:0 15px 40px #0005}
-.card.green-border{border-color:#14a978}.card.blue-border{border-color:#087bda}.card.red-border{border-color:#9d3152}
-.title{font-family:Lalezar;font-size:27px;margin:0 0 14px}.muted{color:#9eb2c0}
-.notice{min-height:190px;background:linear-gradient(135deg,#0a3450,#062039)}
-.notice p{font-size:20px;line-height:2;margin:0}
-.poll p{font-size:20px;font-weight:600}
-.btn{border:0;border-radius:14px;padding:13px 19px;font:700 16px Vazirmatn;cursor:pointer;margin:5px;color:#041b14;background:#20e99b;box-shadow:0 7px 20px #20e99b22}
-.btn.no{background:#132e42;color:#fff}.btn.pay{background:#218dff;color:#fff}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
-.stat{text-align:center;min-height:165px;padding:20px;border-radius:21px;background:#061c2bde;border:1px solid #194866}
-.stat .icon{font-size:38px}.stat .num{font-size:42px;font-weight:800;margin:3px 0}.stat .small{color:#a9bdca}
-.stat.green{border-color:#0fae79}.stat.blue{border-color:#147cd2}.stat.red{border-color:#b73d62}
-.stat.green .num{color:#27eca1}.stat.blue .num{color:#2999ff}.stat.red .num{color:#ff6a87}
-.players{display:flex;gap:10px;flex-wrap:wrap}.player{padding:11px 16px;background:#0a2b41;border:1px solid #205b7d;border-radius:14px}
-.match{display:flex;gap:20px;align-items:center}.pitch{width:170px;height:115px;border-radius:19px;flex:none;background:linear-gradient(135deg,#08734e,#12aa6c);display:grid;place-items:center;font-size:53px;box-shadow:inset 0 0 35px #0004}
-.details{flex:1}.row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #1a4055;padding:9px 0;color:#d8e5eb}.row:last-child{border:0}
-.map{background:#123b57;color:white}
-.message input,.message textarea{width:100%;border:1px solid #225a79;background:#031522;color:#fff;border-radius:13px;padding:13px;font:15px Vazirmatn;margin-bottom:10px;outline:none}.message textarea{min-height:90px;resize:vertical}
-.success{display:none;color:#20eca0;font-weight:700;margin-top:8px}
-nav{position:fixed;z-index:20;bottom:0;left:50%;transform:translateX(-50%);width:min(1100px,100%);height:84px;background:#041321f2;backdrop-filter:blur(15px);border-top:1px solid #1b4661;display:flex;justify-content:space-around}
-nav a{flex:1;text-align:center;text-decoration:none;color:#9fb1c1;font-size:13px;padding-top:9px;cursor:pointer}nav a span{display:block;font-size:27px;line-height:33px}nav a.active{color:#20eca0}
-.modal{display:none;position:fixed;inset:0;background:#000b;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{width:min(480px,100%);background:#08243a;border:1px solid #1e5d80;border-radius:24px;padding:25px;box-shadow:0 25px 80px #000}.modalbox h2{margin-top:0;font-family:Lalezar;font-size:30px}.close{float:left;font-size:27px;cursor:pointer}
-@media(max-width:720px){.header{height:105px;padding:15px}.logo{width:58px;height:58px;font-size:35px}.brand h1{font-size:25px}.header-icons{font-size:24px}.grid{grid-template-columns:1fr}main{padding:14px}.stats{gap:8px}.stat{padding:13px 5px;min-height:140px}.stat .num{font-size:32px}.match{align-items:flex-start}.pitch{width:105px;height:90px}.row{font-size:13px}}
+
+*{
+    box-sizing:border-box
+}
+
+html{
+    scroll-behavior:smooth
+}
+
+body{
+    margin:0;
+    background:#020b14;
+    color:#f4f8fb;
+    font-family:Vazirmatn,Tahoma,sans-serif
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+    radial-gradient(
+        circle at 50% -10%,
+        #123d5d,
+        #061a29 38%,
+        #020a12 80%
+    )
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.18;
+    background-image:
+    linear-gradient(
+        115deg,
+        transparent 20%,
+        #1eeaa022 20.5%,
+        transparent 21%
+    ),
+    linear-gradient(
+        70deg,
+        transparent 40%,
+        #1687ff14 40.5%,
+        transparent 41%
+    );
+    background-size:180px 180px
+}
+
+.app{
+    max-width:1100px;
+    margin:auto;
+    padding-bottom:105px
+}
+
+.header{
+    height:128px;
+    padding:22px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #15405b;
+    background:linear-gradient(#03101cdd,#03101c66)
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px
+}
+
+.logo{
+    width:78px;
+    height:78px;
+    border:2px solid #20e99b;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:48px;
+    background:#062338;
+    box-shadow:0 0 30px #20e99b25
+}
+
+.brand h1{
+    font-family:Lalezar;
+    font-size:33px;
+    line-height:1.05;
+    margin:0
+}
+
+.brand h1:last-child{
+    color:#20eca0
+}
+
+.header-icons{
+    font-size:30px;
+    display:flex;
+    gap:22px
+}
+
+main{
+    padding:25px
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px
+}
+
+.card{
+    background:linear-gradient(145deg,#0a263bdf,#051827e8);
+    border:1px solid #174c6c;
+    border-radius:24px;
+    padding:22px;
+    box-shadow:0 15px 40px #0005
+}
+
+.card.green-border{
+    border-color:#14a978
+}
+
+.card.blue-border{
+    border-color:#087bda
+}
+
+.card.red-border{
+    border-color:#9d3152
+}
+
+.title{
+    font-family:Lalezar;
+    font-size:27px;
+    margin:0 0 14px
+}
+
+.notice{
+    min-height:190px;
+    background:linear-gradient(135deg,#0a3450,#062039)
+}
+
+.notice p{
+    font-size:20px;
+    line-height:2;
+    margin:0
+}
+
+.poll p{
+    font-size:20px;
+    font-weight:600
+}
+
+.btn{
+    border:0;
+    border-radius:14px;
+    padding:13px 19px;
+    font:700 16px Vazirmatn;
+    cursor:pointer;
+    margin:5px;
+    color:#041b14;
+    background:#20e99b;
+    box-shadow:0 7px 20px #20e99b22
+}
+
+.btn.no{
+    background:#132e42;
+    color:#fff
+}
+
+.btn.pay{
+    background:#218dff;
+    color:#fff
+}
+
+.btn:disabled{
+    opacity:.5;
+    cursor:not-allowed
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:20px 0
+}
+
+.stat{
+    text-align:center;
+    min-height:165px;
+    padding:20px;
+    border-radius:21px;
+    background:#061c2bde;
+    border:1px solid #194866
+}
+
+.stat .icon{
+    font-size:38px
+}
+
+.stat .num{
+    font-size:42px;
+    font-weight:800;
+    margin:3px 0
+}
+
+.stat .small{
+    color:#a9bdca
+}
+
+.stat.green{
+    border-color:#0fae79
+}
+
+.stat.blue{
+    border-color:#147cd2
+}
+
+.stat.red{
+    border-color:#b73d62
+}
+
+.stat.green .num{
+    color:#27eca1
+}
+
+.stat.blue .num{
+    color:#2999ff
+}
+
+.stat.red .num{
+    color:#ff6a87
+}
+
+.players{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+
+.player{
+    padding:11px 16px;
+    background:#0a2b41;
+    border:1px solid #205b7d;
+    border-radius:14px
+}
+
+.match{
+    display:flex;
+    gap:20px;
+    align-items:center
+}
+
+.pitch{
+    width:170px;
+    height:115px;
+    border-radius:19px;
+    flex:none;
+    background:linear-gradient(135deg,#08734e,#12aa6c);
+    display:grid;
+    place-items:center;
+    font-size:53px;
+    box-shadow:inset 0 0 35px #0004
+}
+
+.details{
+    flex:1
+}
+
+> Amirali Behjat:
+.row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:1px solid #1a4055;
+    padding:9px 0;
+    color:#d8e5eb
+}
+
+.row:last-child{
+    border:0
+}
+
+.map{
+    background:#123b57;
+    color:white
+}
+
+.message input,
+.message textarea{
+    width:100%;
+    border:1px solid #225a79;
+    background:#031522;
+    color:#fff;
+    border-radius:13px;
+    padding:13px;
+    font:15px Vazirmatn;
+    margin-bottom:10px;
+    outline:none
+}
+
+.message textarea{
+    min-height:90px;
+    resize:vertical
+}
+
+.success{
+    display:none;
+    color:#20eca0;
+    font-weight:700;
+    margin-top:8px
+}
+
+.error{
+    display:none;
+    color:#ff6a87;
+    font-weight:700;
+    margin-top:8px
+}
+
+.loading{
+    color:#9eb2c0;
+    text-align:center;
+    padding:15px
+}
+
+nav{
+    position:fixed;
+    z-index:20;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1100px,100%);
+    height:84px;
+    background:#041321f2;
+    backdrop-filter:blur(15px);
+    border-top:1px solid #1b4661;
+    display:flex;
+    justify-content:space-around
+}
+
+nav a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:#9fb1c1;
+    font-size:13px;
+    padding-top:9px;
+    cursor:pointer
+}
+
+nav a span{
+    display:block;
+    font-size:27px;
+    line-height:33px
+}
+
+nav a.active{
+    color:#20eca0
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:50;
+    align-items:center;
+    justify-content:center;
+    padding:20px
+}
+
+.modal.show{
+    display:flex
+}
+
+.modalbox{
+    width:min(480px,100%);
+    background:#08243a;
+    border:1px solid #1e5d80;
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 25px 80px #000
+}
+
+.modalbox h2{
+    margin-top:0;
+    font-family:Lalezar;
+    font-size:30px
+}
+
+.close{
+    float:left;
+    font-size:27px;
+    cursor:pointer
+}
+
+@media(max-width:720px){
+
+    .header{
+        height:105px;
+        padding:15px
+    }
+
+    .logo{
+        width:58px;
+        height:58px;
+        font-size:35px
+    }
+
+    .brand h1{
+        font-size:25px
+    }
+
+    .header-icons{
+        font-size:24px
+    }
+
+    .grid{
+        grid-template-columns:1fr
+    }
+
+    main{
+        padding:14px
+    }
+
+    .stats{
+        gap:8px
+    }
+
+    .stat{
+        padding:13px 5px;
+        min-height:140px
+    }
+
+    .stat .num{
+        font-size:32px
+    }
+
+    .match{
+        align-items:flex-start
+    }
+
+    .pitch{
+        width:105px;
+        height:90px
+    }
+
+    .row{
+        font-size:13px
+    }
+}
+
 </style>
 </head>
+
 <body>
+
 <div class="app">
+
 <header class="header">
-  <div class="brand"><div class="logo">⚽</div><div><h1>بچه‌های سالن</h1><h1>مدرسه انرژی اتمی</h1></div></div>
-  <div class="header-icons">🔔　☰</div>
+
+    <div class="brand">
+
+        <div class="logo">
+            ⚽
+        </div>
+
+        <div>
+            <h1>بچه‌های سالن</h1>
+            <h1>مدرسه انرژی اتمی</h1>
+        </div>
+
+    </div>
+
+    <div class="header-icons">
+        🔔 ☰
+    </div>
+
 </header>
 
+
 <main>
+
 <div class="grid">
+
 <section class="card notice blue-border">
-<h2 class="title">💬 پیام مدیریت</h2>
-<p id="noticeText">سلام بچه‌ها! برای بازی این هفته نظر سنجی آماده است. لطفاً حضور خود را ثبت کنید.</p>
+
+    <h2 class="title">
+        💬 پیام مدیریت
+    </h2>
+
+    <p id="noticeText">
+        سلام بچه‌ها! برای بازی این هفته نظر سنجی آماده است. لطفاً حضور خود را ثبت کنید.
+    </p>
+
 </section>
+
 
 <section class="card poll green-border" id="poll">
-<h2 class="title">📝 نظرسنجی این هفته</h2>
-<p id="question">آیا برای بازی این هفته می‌آیید؟</p>
-<button class="btn" onclick="answer(true)">بله، می‌آیم ✓</button>
-<button class="btn no" onclick="answer(false)">خیر ✕</button>
+
+    <h2 class="title">
+        📝 نظرسنجی این هفته
+    </h2>
+
+    <p id="question">
+        آیا برای بازی این هفته می‌آیید؟
+    </p>
+
+    <button
+        class="btn"
+        id="yesBtn"
+        onclick="answer(true)"
+    >
+        بله، می‌آیم ✓
+    </button>
+
+    <button
+        class="btn no"
+        id="noBtn"
+        onclick="answer(false)"
+    >
+        خیر ✕
+    </button>
+
+    <div
+        id="pollLoading"
+        class="loading"
+        style="display:none"
+    >
+        در حال ثبت پاسخ...
+    </div>
+
+    <div
+        id="pollError"
+        class="error"
+    ></div>
+
 </section>
+
 </div>
+
 
 <div class="stats">
-<section class="stat green"><div class="icon">👥</div><div class="num" id="present">12</div><div>حاضرین</div><div class="small">از ۲۰ نفر</div></section>
-<section class="stat blue"><div class="icon">💳</div><div class="num" id="paid">10</div><div>پرداخت‌شده</div><div class="small">از ۲۰ نفر</div></section>
-<section class="stat red"><div class="icon">✕</div><div class="num" id="unpaid">2</div><div>پرداخت‌نشده</div><div class="small">از ۲۰ نفر</div></section>
-</div>
 
-<section class="card green-border" id="players">
-<h2 class="title">👥 بازیکنان حاضر</h2>
-<div class="players" id="playerList">
-<div class="player">امیرعلی بهجت</div><div class="player">علی محمدی</div><div class="player">رضا کریمی</div><div class="player">محمد حسینی</div><div class="player">پارسا احمدی</div>
-</div>
+<section class="stat green">
+
+    <div class="icon">
+        👥
+    </div>
+
+    <div
+        class="num"
+        id="present"
+    >
+        0
+    </div>
+
+    <div>
+        حاضرین
+    </div>
+
+    <div class="small">
+        از ۲۰ نفر
+    </div>
+
 </section>
 
-<section class="card blue-border" style="margin-top:20px" id="game">
-<h2 class="title">📅 بازی این هفته</h2>
-<div class="match">
-<div class="pitch">⚽</div>
-<div class="details">
-<div class="row"><b>📅 تاریخ</b><span id="date">پنجشنبه</span></div>
-<div class="row"><b>🕐 ساعت</b><span id="time">۱۸:۰۰</span></div>
-<div class="row"><b>📍 مکان</b><span id="place">سالن مدرسه انرژی اتمی</span></div>
-<div class="row"><b>👥 ظرفیت</b><span id="capacity">۲۰ نفر</span></div>
-<button class="btn map" onclick="openMap()">📍 مشاهده لوکیشن</button>
-</div>
-</div>
+
+<section class="stat blue">
+
+> Amirali Behjat:
+<div class="icon">
+        💳
+    </div>
+
+    <div
+        class="num"
+        id="paid"
+    >
+        0
+    </div>
+
+    <div>
+        پرداخت‌شده
+    </div>
+
+    <div class="small">
+        از ۲۰ نفر
+    </div>
+
 </section>
 
-<section class="card message" style="margin-top:20px">
-<h2 class="title">✉️ پیام به مدیر</h2>
-<input id="sender" placeholder="نام شما">
-<textarea id="message" placeholder="پیام خود را بنویسید..."></textarea>
-<button class="btn" onclick="sendMessage()">ارسال پیام به مدیر</button>
-<div id="msgSuccess" class="success">پیام شما با موفقیت ثبت شد ✓</div>
+
+<section class="stat red">
+
+    <div class="icon">
+        ✕
+    </div>
+
+    <div
+        class="num"
+        id="unpaid"
+    >
+        0
+    </div>
+
+    <div>
+        پرداخت‌نشده
+    </div>
+
+    <div class="small">
+        از ۲۰ نفر
+    </div>
+
 </section>
+
+</div>
+
+
+<section
+    class="card green-border"
+    id="players"
+>
+
+    <h2 class="title">
+        👥 بازیکنان حاضر
+    </h2>
+
+    <div
+        class="players"
+        id="playerList"
+    >
+        <div class="loading">
+            در حال دریافت بازیکنان...
+        </div>
+    </div>
+
+</section>
+
+
+<section
+    class="card blue-border"
+    style="margin-top:20px"
+    id="game"
+>
+
+    <h2 class="title">
+        📅 بازی این هفته
+    </h2>
+
+    <div class="match">
+
+        <div class="pitch">
+            ⚽
+        </div>
+
+        <div class="details">
+
+            <div class="row">
+                <b>📅 تاریخ</b>
+                <span id="date">پنجشنبه</span>
+            </div>
+
+            <div class="row">
+                <b>🕐 ساعت</b>
+                <span id="time">۱۸:۰۰</span>
+            </div>
+
+            <div class="row">
+                <b>📍 مکان</b>
+                <span id="place">
+                    سالن مدرسه انرژی اتمی
+                </span>
+            </div>
+
+            <div class="row">
+                <b>👥 ظرفیت</b>
+                <span id="capacity">
+                    ۲۰ نفر
+                </span>
+            </div>
+
+            <button
+                class="btn map"
+                onclick="openMap()"
+            >
+                📍 مشاهده لوکیشن
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section
+    class="card message"
+    style="margin-top:20px"
+>
+
+    <h2 class="title">
+        ✉️ پیام به مدیر
+    </h2>
+
+    <input
+        id="sender"
+        placeholder="نام شما"
+    >
+
+    <textarea
+        id="message"
+        placeholder="پیام خود را بنویسید..."
+    ></textarea>
+
+    <button
+        class="btn"
+        id="sendMessageBtn"
+        onclick="sendMessage()"
+    >
+        ارسال پیام به مدیر
+    </button>
+
+    <div
+        id="msgSuccess"
+        class="success"
+    >
+        پیام شما با موفقیت ثبت شد ✓
+    </div>
+
+    <div
+        id="msgError"
+        class="error"
+    ></div>
+
+</section>
+
 </main>
 
+
 <nav>
-<a class="active" onclick="go('top')"><span>⌂</span>خانه</a>
-<a onclick="go('poll')"><span>📝</span>نظرسنجی</a>
-<a onclick="pay()"><span>▣</span>پرداخت‌ها</a>
-<a onclick="go('players')"><span>👥</span>بازیکنان</a>
-<a onclick="go('game')"><span>▥</span>آمار</a>
+
+<a
+    class="active"
+    onclick="go('top')"
+>
+    <span>⌂</span>
+    خانه
+</a>
+
+<a
+    onclick="go('poll')"
+>
+    <span>📝</span>
+    نظرسنجی
+</a>
+
+<a
+    onclick="pay()"
+>
+    <span>▣</span>
+    پرداخت‌ها
+</a>
+
+<a
+    onclick="go('players')"
+>
+    <span>👥</span>
+    بازیکنان
+</a>
+
+<a
+    onclick="go('game')"
+>
+    <span>▥</span>
+    آمار
+</a>
+
 </nav>
+
 </div>
 
-<div class="modal" id="modal">
+
+<div
+    class="modal"
+    id="modal"
+>
+
 <div class="modalbox">
-<span class="close" onclick="closeModal()">×</span>
-<h2 id="modalTitle">پرداخت</h2>
-<p id="modalText"></p>
-<button class="btn" id="modalAction" onclick="closeModal()">متوجه شدم</button>
+
+    <span
+        class="close"
+        onclick="closeModal()"
+    >
+        ×
+    </span>
+
+    <h2 id="modalTitle">
+        پرداخت
+    </h2>
+
+    <p id="modalText"></p>
+
+    <button
+        class="btn"
+        id="modalAction"
+        onclick="closeModal()"
+    >
+        متوجه شدم
+    </button>
+
 </div>
+
 </div>
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
-const KEY='energyFootballData';
-let data=JSON.parse(localStorage.getItem(KEY)||'{}');
-if(data.notice) document.getElementById('noticeText').textContent=data.notice;
-if(data.question) document.getElementById('question').textContent=data.question;
-if(data.date) document.getElementById('date').textContent=data.date;
-if(data.time) document.getElementById('time').textContent=data.time;
-if(data.place) document.getElementById('place').textContent=data.place;
-if(data.capacity) document.getElementById('capacity').textContent=data.capacity;
 
-function answer(yes){
- if(yes){
-  document.getElementById('present').textContent=Number(document.getElementById('present').textContent)+1;
-  openModal('حضور شما ثبت شد ✓','عالی! حضور شما ثبت شد. برای تکمیل ثبت‌نام می‌توانید وارد بخش پرداخت شوید.','رفتن به پرداخت',pay);
- }else{
-  openModal('ثبت شد','عدم حضور شما ثبت شد. ممنون که اطلاع دادید.','باشه',closeModal);
- }
+/* ==========================================
+   اتصال به Supabase
+   ========================================== */
+
+const SUPABASE_URL =
+    "https://yzhsqjjxlthcjxasauzz.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_EEdOpJTspFqgBdaLaQzETg_1stNI9_6";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ==========================================
+   نام کاربر
+   ========================================== */
+
+function getUserName(){
+
+    let name =
+        localStorage.getItem("energyUserName");
+
+    if(!name){
+
+        name =
+            prompt(
+                "برای ثبت حضور، لطفاً نام خود را وارد کنید:"
+            );
+
+        if(!name || !name.trim()){
+
+> Amirali Behjat:
+return null;
+
+        }
+
+        name = name.trim();
+
+        localStorage.setItem(
+            "energyUserName",
+            name
+        );
+
+    }
+
+    return name;
 }
-function pay(){openModal('پرداخت بازی','در این بخش روش پرداخت و ارسال رسید قرار می‌گیرد. این قسمت برای اتصال به دیتابیس آنلاین آماده است.','باشه',closeModal)}
-function openMap(){openModal('لوکیشن سالن','لینک لوکیشن از پنل مدیریت تنظیم می‌شود.','باشه',closeModal)}
-function sendMessage(){
- let name=document.getElementById('sender').value.trim(), msg=document.getElementById('message').value.trim();
- if(!name||!msg){alert('لطفاً نام و پیام را وارد کنید.');return}
- let arr=JSON.parse(localStorage.getItem('energyMessages')||'[]');
- arr.push({name,message:msg,date:new Date().toISOString()});localStorage.setItem('energyMessages',JSON.stringify(arr));
- document.getElementById('msgSuccess').style.display='block';document.getElementById('message').value='';
+
+
+/* ==========================================
+   ثبت پاسخ نظرسنجی
+   ========================================== */
+
+async function answer(yes){
+
+    const name =
+        getUserName();
+
+    if(!name){
+        return;
+    }
+
+
+    const yesBtn =
+        document.getElementById("yesBtn");
+
+    const noBtn =
+        document.getElementById("noBtn");
+
+    const loading =
+        document.getElementById("pollLoading");
+
+    const errorBox =
+        document.getElementById("pollError");
+
+
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+
+    loading.style.display = "block";
+    errorBox.style.display = "none";
+
+
+    try{
+
+        /*
+         بررسی می‌کنیم آیا این شخص
+         قبلاً ثبت شده یا نه
+        */
+
+        const { data: oldBookings, error: findError } =
+            await supabaseClient
+                .from("bookings")
+                .select("id")
+                .eq("name", name)
+                .limit(1);
+
+
+        if(findError){
+            throw findError;
+        }
+
+
+        const bookingData = {
+
+            name:name,
+
+            status:
+                yes
+                ? "present"
+                : "absent",
+
+            payment_status:"unpaid"
+
+        };
+
+
+        /* اگر قبلاً ثبت شده باشد */
+
+        if(oldBookings && oldBookings.length > 0){
+
+            const { error } =
+                await supabaseClient
+                    .from("bookings")
+                    .update(bookingData)
+                    .eq(
+                        "id",
+                        oldBookings[0].id
+                    );
+
+            if(error){
+                throw error;
+            }
+
+        }
+
+        /* اگر اولین بار باشد */
+
+        else{
+
+            const { error } =
+                await supabaseClient
+                    .from("bookings")
+                    .insert(bookingData);
+
+            if(error){
+                throw error;
+            }
+
+        }
+
+
+        await loadBookings();
+
+
+        if(yes){
+
+            openModal(
+                "حضور شما ثبت شد ✓",
+
+                "حضور شما با موفقیت در دیتابیس ثبت شد. برای پرداخت می‌توانید وارد بخش پرداخت‌ها شوید.",
+
+                "رفتن به پرداخت",
+
+                pay
+            );
+
+        }
+
+        else{
+
+            openModal(
+                "ثبت شد",
+
+                "عدم حضور شما در دیتابیس ثبت شد. ممنون که اطلاع دادید.",
+
+                "باشه",
+
+                closeModal
+            );
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Supabase error:",
+            error
+        );
+
+        errorBox.textContent =
+            "ثبت پاسخ انجام نشد. اتصال دیتابیس یا دسترسی جدول را بررسی کنید.";
+
+        errorBox.style.display = "block";
+
+    }
+
+    finally{
+
+        yesBtn.disabled = false;
+        noBtn.disabled = false;
+
+        loading.style.display = "none";
+
+    }
+
 }
-function openModal(title,text,action,fn){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;let b=document.getElementById('modalAction');b.textContent=action;b.onclick=fn;document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+
+/* ==========================================
+   دریافت بازیکنان و آمار
+   ========================================== */
+
+async function loadBookings(){
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("bookings")
+                .select(
+                    "id,name,status,payment_status,created_at"
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending:true
+                    }
+                );
+
+
+        if(error){
+            throw error;
+        }
+
+
+        const bookings =
+            data || [];
+
+
+        const presentPlayers =
+            bookings.filter(
+                item =>
+                    item.status === "present"
+            );
+
+
+        const paidPlayers =
+            presentPlayers.filter(
+                item =>
+                    item.payment_status === "paid"
+            );
+
+> Amirali Behjat:
+const unpaidPlayers =
+            presentPlayers.filter(
+                item =>
+                    item.payment_status !== "paid"
+            );
+
+
+        /*
+         آمار
+        */
+
+        document.getElementById(
+            "present"
+        ).textContent =
+            presentPlayers.length;
+
+
+        document.getElementById(
+            "paid"
+        ).textContent =
+            paidPlayers.length;
+
+
+        document.getElementById(
+            "unpaid"
+        ).textContent =
+            unpaidPlayers.length;
+
+
+        /*
+         بازیکنان حاضر
+        */
+
+        const list =
+            document.getElementById(
+                "playerList"
+            );
+
+
+        if(presentPlayers.length === 0){
+
+            list.innerHTML =
+                '<div class="loading">هنوز بازیکنی حضور خود را ثبت نکرده است.</div>';
+
+        }
+
+        else{
+
+            list.innerHTML =
+                presentPlayers
+                .map(
+                    player =>
+                        <div class="player">${escapeHtml(player.name)}</div>
+                )
+                .join("");
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Load bookings error:",
+            error
+        );
+
+
+        document.getElementById(
+            "playerList"
+        ).innerHTML =
+            '<div class="error" style="display:block">خطا در دریافت اطلاعات دیتابیس.</div>';
+
+    }
+
+}
+
+
+/* ==========================================
+   پرداخت
+   ========================================== */
+
+async function pay(){
+
+    const name =
+        getUserName();
+
+    if(!name){
+        return;
+    }
+
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("bookings")
+                .select(
+                    "id,name,status,payment_status"
+                )
+                .eq(
+                    "name",
+                    name
+                )
+                .limit(1);
+
+
+        if(error){
+            throw error;
+        }
+
+
+        if(!data || data.length === 0){
+
+            openModal(
+
+                "ابتدا حضور خود را ثبت کنید",
+
+                "برای پرداخت ابتدا باید در نظرسنجی گزینه «بله، می‌آیم» را انتخاب کنید.",
+
+                "رفتن به نظرسنجی",
+
+                function(){
+
+                    closeModal();
+
+                    go("poll");
+
+                }
+
+            );
+
+            return;
+
+        }
+
+
+        const booking =
+            data[0];
+
+
+        if(booking.status !== "present"){
+
+            openModal(
+
+                "پرداخت امکان‌پذیر نیست",
+
+                "برای پرداخت باید ابتدا حضور خود را ثبت کنید.",
+
+                "باشه",
+
+                closeModal
+
+            );
+
+            return;
+
+        }
+
+
+        if(
+            booking.payment_status ===
+            "paid"
+        ){
+
+            openModal(
+
+                "پرداخت قبلاً ثبت شده ✓",
+
+                "پرداخت شما قبلاً در دیتابیس ثبت شده است.",
+
+                "باشه",
+
+                closeModal
+
+            );
+
+            return;
+
+        }
+
+
+        /*
+         فعلاً درگاه واقعی وصل نشده.
+         در مرحله بعد می‌توانیم درگاه
+         و ثبت رسید را به همین بخش وصل کنیم.
+        */
+
+        openModal(
+
+            "پرداخت بازی",
+
+            "درگاه پرداخت هنوز به سایت متصل نشده است. اتصال درگاه را می‌توانیم به همین سیستم اضافه کنیم.",
+
+            "باشه",
+
+            closeModal
+
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Payment error:",
+            error
+        );
+
+
+        openModal(
+
+            "خطا",
+
+            "امکان بررسی وضعیت پرداخت وجود ندارد.",
+
+            "باشه",
+
+            closeModal
+
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   ثبت پیام به مدیر
+   ========================================== */
+
+async function sendMessage(){
+
+    const name =
+        document
+            .getElementById("sender")
+            .value
+            .trim();
+
+
+    const message =
+        document
+            .getElementById("message")
+            .value
+            .trim();
+
+> Amirali Behjat:
+const success =
+        document.getElementById(
+            "msgSuccess"
+        );
+
+
+    const errorBox =
+        document.getElementById(
+            "msgError"
+        );
+
+
+    const button =
+        document.getElementById(
+            "sendMessageBtn"
+        );
+
+
+    if(!name || !message){
+
+        alert(
+            "لطفاً نام و پیام را وارد کنید."
+        );
+
+        return;
+
+    }
+
+
+    button.disabled = true;
+
+    success.style.display = "none";
+    errorBox.style.display = "none";
+
+
+    try{
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("messages")
+                .insert({
+
+                    name:name,
+
+                    message:message
+
+                });
+
+
+        if(error){
+            throw error;
+        }
+
+
+        success.style.display =
+            "block";
+
+
+        document.getElementById(
+            "message"
+        ).value = "";
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Message error:",
+            error
+        );
+
+
+        errorBox.textContent =
+            "ارسال پیام انجام نشد. اتصال دیتابیس را بررسی کنید.";
+
+        errorBox.style.display =
+            "block";
+
+    }
+
+    finally{
+
+        button.disabled = false;
+
+    }
+
+}
+
+
+/* ==========================================
+   لوکیشن
+   ========================================== */
+
+function openMap(){
+
+    openModal(
+
+        "لوکیشن سالن",
+
+        "لینک لوکیشن از پنل مدیریت تنظیم می‌شود.",
+
+        "باشه",
+
+        closeModal
+
+    );
+
+}
+
+
+/* ==========================================
+   Modal
+   ========================================== */
+
+function openModal(
+    title,
+    text,
+    action,
+    fn
+){
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "modalText"
+    ).textContent =
+        text;
+
+
+    const button =
+        document.getElementById(
+            "modalAction"
+        );
+
+
+    button.textContent =
+        action;
+
+
+    button.onclick =
+        fn;
+
+
+    document.getElementById(
+        "modal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function closeModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* ==========================================
+   پیمایش
+   ========================================== */
+
+function go(id){
+
+    if(id === "top"){
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+        return;
+
+    }
+
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if(element){
+
+        element.scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+}
+
+
+/* ==========================================
+   امنیت نمایش نام
+   ========================================== */
+
+function escapeHtml(value){
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+/* ==========================================
+   شروع سایت
+   ========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+        await loadBookings();
+
+    }
+);
+
 </script>
+
 </body>
 </html>
