@@ -1,0 +1,38 @@
+const notice=localStorage.getItem("adminNotice");
+
+    if(date){
+        document.getElementById("gameDate").textContent=date;
+        document.getElementById("inputGameDate").value=date;
+    }
+
+    if(time){
+        document.getElementById("gameTime").textContent=time;
+        document.getElementById("inputGameTime").value=time;
+    }
+
+    if(place){
+        document.getElementById("gamePlace").textContent=place;
+        document.getElementById("inputGamePlace").value=place;
+    }
+
+    if(capacity){
+        document.getElementById("gameCapacity").textContent=
+            capacity+" نفر";
+
+        document.getElementById("inputGameCapacity").value=capacity;
+    }
+
+    if(notice){
+
+        document.getElementById("adminNotice").textContent=notice;
+
+        document.getElementById("noticeInput").value=notice;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
